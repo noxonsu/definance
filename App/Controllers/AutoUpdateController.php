@@ -11,10 +11,9 @@ class AutoUpdateController {
 	const TRANSIENT_SLUG = 'definance_upgrade_plugin';
 
 	public function __construct() {
-		//delete_site_transient('_site_transient_update_plugins ');
-		delete_site_transient('update_plugins ');
-		//wp_update_plugins();
-		add_filter( 'plugins_api', [ $this, 'setUpdateInfo', 20, 3 ] );
+		add_action('plugins_api', function($res, $action, $args) {
+			return  $this->setUpdateInfo($res, $action, $args);
+		},200,3);
 		add_filter( 'site_transient_update_plugins', [ $this, 'pushUpdate' ] );
 		add_filter( 'transient_update_plugins', [ $this, 'pushUpdate' ] );
 		add_action( 'upgrader_process_complete', [ $this, 'afterUpdate', 10, 2 ] );
@@ -22,7 +21,8 @@ class AutoUpdateController {
 	}
 
 
-	public function setUpdateInfo( $res, $action, $args ) {
+	public function setUpdateInfo( $res, $action, $args) {
+
 
 		// return false if this is not about getting plugin information.
 		if ( 'plugin_information' !== $action ) {
@@ -33,7 +33,6 @@ class AutoUpdateController {
 		if ( self::PLUGIN_SLUG !== $args->slug ) {
 			return false;
 		}
-
 		// trying to get from cache first.
 		if ( false == $remote = get_transient( self::TRANSIENT_SLUG ) ) {
 
@@ -45,15 +44,17 @@ class AutoUpdateController {
 				),
 			) );
 
+
 			if ( ! is_wp_error( $remote ) && isset( $remote['response']['code'] ) && $remote['response']['code'] == 200 && ! empty( $remote['body'] ) ) {
 				set_transient( self::TRANSIENT_SLUG, $remote, HOUR_IN_SECONDS );
 			}
 
 		}
-
 		if ( ! is_wp_error( $remote ) && isset( $remote['response']['code'] ) && $remote['response']['code'] == 200 && ! empty( $remote['body'] ) ) {
 
+
 			$remote = json_decode( $remote['body'] );
+
 			$res    = new \stdClass();
 
 			$res->name           = $remote->name;
@@ -79,14 +80,10 @@ class AutoUpdateController {
 				$res->sections['screenshots'] = $remote->sections->screenshots;
 			}
 
-			$res->banners = array(
-				'low'  => 'https://ps.w.org/multi-currency-wallet/assets/banner-772x250.png',
-				'high' => 'https://ps.w.org/multi-currency-wallet/assets/banner-772x250.png',
-			);
-
 			return $res;
 
 		}
+
 
 		return false;
 	}
@@ -132,7 +129,6 @@ class AutoUpdateController {
 				$res->tested                       = $remote->tested;
 				$res->package                      = $remote->download_url;
 				$transient->response[$res->plugin] = $res;
-				//$transient->checked[$res->plugin] = $remote->version;
 
 			}
 		}
