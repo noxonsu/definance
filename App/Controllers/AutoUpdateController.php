@@ -21,6 +21,13 @@ class AutoUpdateController {
 	}
 
 
+	/**
+	 * @param $res
+	 * @param $action
+	 * @param $args
+	 *
+	 * @return false|\stdClass
+	 */
 	public function setUpdateInfo( $res, $action, $args) {
 
 
@@ -88,6 +95,11 @@ class AutoUpdateController {
 		return false;
 	}
 
+	/**
+	 * @param $transient
+	 *
+	 * @return mixed
+	 */
 	public function pushUpdate($transient){
 
 		if ( empty( $transient->checked ) ) {
@@ -136,6 +148,10 @@ class AutoUpdateController {
 	}
 
 
+	/**
+	 * @param $upgrader_object
+	 * @param $options
+	 */
 	public function afterUpdate($upgrader_object, $options){
 		if ( $options['action'] == 'update' && $options['type'] === 'plugin' ) {
 			// just clean the cache when new plugin version is installed.
@@ -143,6 +159,9 @@ class AutoUpdateController {
 		}
 	}
 
+	/**
+	 *
+	 */
 	public function updateForceCheck(){
 		if ( ! isset( $_GET['force-check'] ) ) {
 			return;
