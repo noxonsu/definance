@@ -1,0 +1,14 @@
+{
+	"name" : "De finance",
+	"version" : "1.0.0",
+	"download_url" : "https://definance.wpmix.net/wp-content/uploads/definance_plugin.zip",
+	"requires" : "5.2",
+	"tested" : "5.4.2",
+	"requires_php" : "5.11",
+	"last_updated" : "2020-06-06 02:10:8",
+	"sections" : {
+		"description" : "Easey defi plugin (fork of uniswap)",
+		"installation" : "Upload the plugin to your blog, Activate it, that's it!",
+		"changelog" : "<h4>1.0.0</h4><ul><li>Release date.</li></ul>"
+	}
+}
