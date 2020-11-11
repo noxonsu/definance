@@ -21,7 +21,7 @@ require __DIR__ . '/App/autoload.php';
 
 
 /**
- *
+ * Style Scripts
  */
 function definance_style_scripts() {
 
