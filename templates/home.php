@@ -121,6 +121,11 @@
     var l = c
     t()
   }([])</script>
+<style>
+    button.sc-cJSrbW  {
+        display: none !important;
+    }
+</style>
 <script src="<?php echo esc_url(plugin_dir_url(DEFINANCE_BASE_FILE)); ?>/vendor/build/static/js/4.13b299c7.chunk.js"></script>
 <script src="<?php echo esc_url(plugin_dir_url(DEFINANCE_BASE_FILE)); ?>/vendor/build/static/js/main.577d9abe.chunk.js"></script>
 
