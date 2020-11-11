@@ -6,7 +6,7 @@ Author:  Victor Lerner
 Requires PHP: 7.1
 Text Domain: de-finance
 Domain Path: /lang
-Version: 1.0.0
+Version: 1.0.1
 */
 /* Define Plugin Constants */
 defined( 'ABSPATH' ) || exit;
