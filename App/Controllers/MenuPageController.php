@@ -5,6 +5,7 @@ use DEFINANCE\Controller;
 
 class MenuPageController extends Controller
 {
+    CONST MAIN_FILE = 'main.ea6eaa4f.chunk.js';
 
 
     /**
@@ -58,17 +59,19 @@ class MenuPageController extends Controller
 
 
             ob_start();
-            include DEFINANCE_BASE_DIR.'/vendor/build/static/js/main.577d9abe.chunk.js';
+            include DEFINANCE_BASE_DIR.'/vendor/build/static/js/'. self::MAIN_FILE;
 
             $js = ob_get_clean();
+
             if (isset($_POST['definance_icon'][1])) {
 
-                preg_match_all('#244\:function\(e\,n\,t\){e.exports=t.p\+"(.*?)"#', $js, $math);
+                preg_match_all('#338\:function\(e,t.n\){e.exports=n.p\+"(.*?)"#', $js, $math);
                 $url = str_replace(get_home_url('') . '/',  '', $_POST['definance_icon']);
                 $js  = str_replace($math[1], $url, $js);
 
 
             }
+            /*
             if (isset($_POST['definance_icon2'][1])) {
 
 
@@ -76,8 +79,8 @@ class MenuPageController extends Controller
                 $url = str_replace(get_home_url() . '/', '', $_POST['definance_icon2']);
 
                 $js = str_replace($math[1], $url, $js);
-            }
-            file_put_contents(DEFINANCE_BASE_DIR.'/vendor/build/static/js/main.577d9abe.chunk.js', $js);
+            }*/
+            file_put_contents(DEFINANCE_BASE_DIR.'/vendor/build/static/js/'. self::MAIN_FILE, $js);
         }
     }
 
