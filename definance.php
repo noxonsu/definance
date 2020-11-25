@@ -6,14 +6,14 @@ Author:  Victor Lerner
 Requires PHP: 7.1
 Text Domain: de-finance
 Domain Path: /lang
-Version: 1.0.4
+Version: 1.0.5
  */
 /* Define Plugin Constants */
 defined( 'ABSPATH' ) || exit;
 define( 'DEFINANCE_TEMPLATE_DIR', __DIR__ . '/templates' );
 define( 'DEFINANCE_BASE_DIR', __DIR__ );
 define( 'DEFINANCE_BASE_FILE', __FILE__ );
-define( 'DEFINANCE_VER', '1.0.4' );
+define( 'DEFINANCE_VER', '1.0.5' );
 /**
  * Plugin Init
  */
