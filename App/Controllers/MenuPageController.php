@@ -64,7 +64,7 @@ class MenuPageController extends Controller
             if (isset($_POST['definance_icon'][1])) {
 
                 preg_match_all('#244\:function\(e\,n\,t\){e.exports=t.p\+"(.*?)"#', $js, $math);
-                $url = str_replace(get_home_url(), '', $_POST['definance_icon']);
+                $url = str_replace(get_home_url('') . '/',  '', $_POST['definance_icon']);
                 $js  = str_replace($math[1], $url, $js);
 
 
@@ -73,7 +73,7 @@ class MenuPageController extends Controller
 
 
                 preg_match_all('#242\:function\(e\,n\,t\){e.exports=t.p\+"(.*?)"#', $js, $math);
-                $url = str_replace(get_home_url(), '', $_POST['definance_icon2']);
+                $url = str_replace(get_home_url() . '/', '', $_POST['definance_icon2']);
 
                 $js = str_replace($math[1], $url, $js);
             }
