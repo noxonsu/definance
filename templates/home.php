@@ -1,7 +1,7 @@
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
-    <meta charset="<?php bloginfo('charset'); ?>">
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/>
 
 </head>
@@ -102,7 +102,8 @@
         }, u.p = "./", u.oe = function (e) {
             throw console.error(e), e
         };
-        var i = this["webpackJsonp@uniswap/interface"] = this["webpackJsonp@uniswap/interface"] || [], c = i.push.bind(i);
+        var i = this["webpackJsonp@uniswap/interface"] = this["webpackJsonp@uniswap/interface"] || [],
+            c = i.push.bind(i);
         i.push = r, i = i.slice();
         for (var l = 0; l < i.length; l++) r(i[l]);
         var f = c;
@@ -120,9 +121,16 @@
         left: 0;
         overflow: auto;
     }
-</style>
-<script src="<?php echo esc_url(plugin_dir_url(DEFINANCE_BASE_FILE)); ?>vendor/build/static/js//4.59215d92.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
-<script src="<?php echo esc_url(plugin_dir_url(DEFINANCE_BASE_FILE)); ?>vendor/build/static/js/main.ea6eaa4f.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
 
+    <?php if(is_user_logged_in()){ ?>
+    #root {
+        margin-top: 30px;
+    }
+
+    <?php } ?>
+</style>
+<script src="<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor/build/static/js//4.59215d92.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
+<script src="<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor/build/static/js/main.ea6eaa4f.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
+<?php wp_footer(); ?>
 </body>
 </html>
