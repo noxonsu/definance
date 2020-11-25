@@ -110,24 +110,7 @@
     }([])</script>
 
 <style>
-    [data-reach-dialog-content] {
 
-
-      /*  background: hsla(0, 0%, 0%, 0.33);
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        overflow: auto;*/
-        /*background: hsla(0, 0%, 0%, 0.33);*/
-        /*position: fixed;*/
-        /*top: 0;*/
-        /*right: 0;*/
-        /*bottom: 0;*/
-        /*left: 0;*/
-        /*overflow: auto;*/
-    }
     .sc-bdVaJa {
         background: hsla(0, 0%, 0%, 0.33);
         position: fixed;
@@ -138,8 +121,8 @@
         overflow: auto;
     }
 </style>
-<script src="<?php echo esc_url(plugin_dir_url(DEFINANCE_BASE_FILE)); ?>vendor/build/static/js//4.59215d92.chunk.js"></script>
-<script src="<?php echo esc_url(plugin_dir_url(DEFINANCE_BASE_FILE)); ?>vendor/build/static/js/main.ea6eaa4f.chunk.js"></script>
+<script src="<?php echo esc_url(plugin_dir_url(DEFINANCE_BASE_FILE)); ?>vendor/build/static/js//4.59215d92.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
+<script src="<?php echo esc_url(plugin_dir_url(DEFINANCE_BASE_FILE)); ?>vendor/build/static/js/main.ea6eaa4f.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
 
 </body>
 </html>
