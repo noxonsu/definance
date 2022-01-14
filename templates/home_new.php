@@ -57,7 +57,7 @@
                 r.push(t[2] = n);
                 var u, a = document.createElement("script");
                 a.charset = "utf-8", a.timeout = 120, i.nc && a.setAttribute("nonce", i.nc), a.src = function(e) {
-                    return i.p + "static/js/" + ({} [e] || e) + ".chunk.js"
+                    return "<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor_cache/<?php echo DEFINANCE_VER?>/" + ({} [e] || e) + ".chunk.js"
                 }(e);
                 var c = new Error;
                 u = function(r) {
@@ -143,8 +143,11 @@
 
     <?php } ?>
 </style>
-<script src="<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor_new/build/static/js/2.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
-<script src="<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor_new/build/static/js/main.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
+<?php
+definance_prepare_vendor();
+?>
+<script src="<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor_cache/<?php echo DEFINANCE_VER?>/2.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
+<script src="<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor_cache/<?php echo DEFINANCE_VER?>/main.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
 <?php wp_footer(); ?>
 </body>
 </html>
