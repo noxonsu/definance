@@ -19,7 +19,7 @@ class HomePageController extends Controller {
 	public function template($template) {
         if ( is_front_page() || is_home() ) {
 
-            return DEFINANCE_TEMPLATE_DIR  .'/home.php';
+            return DEFINANCE_TEMPLATE_DIR  .'/home_new.php';
         }
 
         return $template;
