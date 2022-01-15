@@ -30,7 +30,7 @@ function definance_shortcode( $attrs ) {
   <?php
   return ob_get_clean();
 }
-add_shortcode( 'definance_widget', 'definance_shortcode' );
+// add_shortcode( 'definance_widget', 'definance_shortcode' );
 
 // tempate as de finance page
 function definance_page_template( $page_template ){

@@ -23,6 +23,7 @@
                   </div>
                 </td>
               </tr>
+              <!--
               <tr>
                 <th scope="row">
                   <label><?php echo esc_html('Shortcode'); ?></label>
@@ -47,38 +48,7 @@
                   </div>
                 </td>
               </tr>
-                        <!--
-                        <tr>
-                            <th scope="row">
-                                <label><?php esc_html_e('Logo url 1', 'definance'); ?></label>
-                            </th>
-                            <td>
-                                <div class="definance-form-inline">
-                                    <input value="<?php echo esc_attr(get_option('definance_icon')); ?>"
-                                           name="definance_icon" type="text" class="large-text js-definance-load-icon ">
-                                    <button class="button button-secondary definance-input-icon"><?php esc_html_e('Upload icon',
-                                            'definance'); ?></button>
-
-                                </div>
-                            </td>
-                        </tr>
-                        -->
-<!--                        <tr>-->
-<!--                            <th scope="row">-->
-<!--                                <label>--><?php //esc_html_e('Logo url 2', 'definance'); ?><!--</label>-->
-<!--                            </th>-->
-<!--                            <td>-->
-<!--                                <div class="definance-form-inline">-->
-<!--                                    <input value="--><?php //echo esc_attr(get_option('definance_icon2')); ?><!--"-->
-<!--                                           name="definance_icon2"-->
-<!--                                           type="text" class="large-text js-definance-load-icon2 ">-->
-<!--                                    <button class="button button-secondary definance-input-icon2">-->
-<!--                                        --><?php //esc_html_e('Upload icon', 'definance'); ?>
-<!--                                    </button>-->
-<!---->
-<!--                                </div>-->
-<!--                            </td>-->
-<!--                        </tr>-->
+              -->
               <tr>
                 <th scope="row"></th>
                 <td>
