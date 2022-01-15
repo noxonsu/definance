@@ -21,7 +21,16 @@ define( 'DEFINANCE_URL', plugin_dir_url( __FILE__ ) );
 require __DIR__ . '/App/autoload.php';
 
 
-
+function definance_shortcode( $attrs ) {
+  ob_start();
+  ?>
+  <div class="definance_widget">
+    <?php include DEFINANCE_TEMPLATE_DIR . DIRECTORY_SEPARATOR . "definance_main.php"; ?>
+  </div>
+  <?php
+  return ob_get_clean();
+}
+add_shortcode( 'definance_widget', 'definance_shortcode' );
 
 function definance_prepare_vendor() {
   $version = (DEFINANCE_VER) ? DEFINANCE_VER : 'no';
