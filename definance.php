@@ -32,6 +32,35 @@ function definance_shortcode( $attrs ) {
 }
 add_shortcode( 'definance_widget', 'definance_shortcode' );
 
+// tempate as de finance page
+function definance_page_template( $page_template ){
+    if ( get_page_template_slug() == 'definance_pagetemplate' ) {
+      $page_template = DEFINANCE_TEMPLATE_DIR . DIRECTORY_SEPARATOR . "home_new.php";
+    }
+    return $page_template;
+}
+add_filter( 'page_template', 'definance_page_template' );
+
+function definance_custom_template($single) {
+
+  global $post;
+  $meta = get_post_meta($post->ID);
+  if (isset($meta['_wp_page_template']) and isset($meta['_wp_page_template'][0]) and ($meta['_wp_page_template'][0] == 'definance_pagetemplate')) {
+    $single = DEFINANCE_TEMPLATE_DIR . DIRECTORY_SEPARATOR . "home_new.php";
+  }
+
+  return $single;
+}
+
+add_filter('single_template', 'definance_custom_template');
+
+function definance_add_template_to_select( $post_templates, $wp_theme, $post, $post_type ) {
+    $post_templates['definance_pagetemplate'] = __('De Finance');
+    return $post_templates;
+}
+add_filter( 'theme_page_templates', 'definance_add_template_to_select', 10, 4 );
+add_filter( 'theme_post_templates', 'definance_add_template_to_select', 10, 4 );
+
 function definance_prepare_vendor() {
   $version = (DEFINANCE_VER) ? DEFINANCE_VER : 'no';
   $SEP = DIRECTORY_SEPARATOR;
