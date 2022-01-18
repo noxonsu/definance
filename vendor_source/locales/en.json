@@ -254,5 +254,10 @@
   "caseWhenNoFeesCharged": "If the total fee is 0%, then no fees, including for the admin, are charged",
   "adminFeeIsPercentOfTotalFee": "The admin fee is a percentage of the total fee",
   "totalFee": "Total fee",
-  "liquidityProviders": "Liquidity providers"
+  "liquidityProviders": "Liquidity providers",
+  "adminAndProvidersFeesDoNotWork": "Admin and providers fees do not work",
+  "tradeAtYourOwnRisk": "Trade at your own risk!",
+  "fakeTokenCreationWarning": "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects",
+  "fakeTokenPurchaseWarning": "If you purchase this token, you may not be able to sell it back",
+  "iUnderstand": "I understand"
 }

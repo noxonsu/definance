@@ -255,5 +255,10 @@
   "caseWhenNoFeesCharged": "Wenn die Gesamtgebühr 0% beträgt, werden keine Gebühren, einschließlich für den Administrator, erhoben",
   "adminFeeIsPercentOfTotalFee": "Die Verwaltungsgebühr ist ein Prozentsatz der Gesamtgebühr",
   "totalFee": "Gesamtgebühr",
-  "liquidityProviders": "Liquiditätsanbieter"
+  "liquidityProviders": "Liquiditätsanbieter",
+  "adminAndProvidersFeesDoNotWork": "Admin- und Providergebühren funktionieren nicht",
+  "tradeAtYourOwnRisk": "Handel auf eigenes Risiko!",
+  "fakeTokenCreationWarning": "Jeder kann ein Token erstellen, einschließlich der Erstellung gefälschter Versionen vorhandener Token, die behaupten, Projekte darzustellen",
+  "fakeTokenPurchaseWarning": "Wenn Sie dieses Token kaufen, können Sie es möglicherweise nicht zurückverkaufen",
+  "iUnderstand": "Ich verstehe"
 }
