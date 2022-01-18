@@ -39,6 +39,9 @@ class MenuPageController extends Controller
     } else {
       delete_option('definance_as_homepage');
     }
+    if (isset( $_POST['definance_page_slug'] )) {
+      update_option('definance_slug', untrailingslashit( sanitize_title( $_POST['definance_page_slug'] ) ));
+    }
     ?>
     <div id="message" class="notice notice-success is-dismissible">
       <p><?php esc_html_e('Settings saved','de-finance'); ?></p>

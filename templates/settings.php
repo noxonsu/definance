@@ -14,6 +14,17 @@
             <tbody>
               <tr>
                 <th scope="row">
+                  <label><?php echo esc_html('Permalink', 'definance'); ?></label>
+                </th>
+                <td>
+                  <code><?php echo esc_url( home_url('/') );?></code>
+									<input name="definance_page_slug" type="text" value="<?php echo esc_attr( definance_page_slug() );?>" class="regular-text code" <?php disabled( get_option( 'definance_as_homepage' ), 'true' ); ?>>
+									<code>/</code>
+									<a href="<?php echo definance_page_url();?>" class="button mcwallet-button-url<?php if( get_option( 'definance_as_homepage' ) ) { echo ' disabled';}?>" target="_blank"><?php esc_html_e( 'View page', 'definance' );?></a>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
                   <label><?php echo esc_html('Home page'); ?></label>
                 </th>
                 <td>
