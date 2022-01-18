@@ -20,6 +20,52 @@ define( 'DEFINANCE_URL', plugin_dir_url( __FILE__ ) );
  */
 require __DIR__ . '/App/autoload.php';
 
+// Perma link
+function definance_default_slug(){
+	return 'definance';
+}
+
+function definance_page_slug(){
+	$slug = definance_default_slug();
+	if( get_option('definance_slug') ) {
+		$slug = get_option('definance_slug');
+	}
+	return esc_html( $slug );
+}
+
+function definance_page_url(){
+	$page_url = home_url('/' . definance_page_slug() . '/');
+	return esc_url( trailingslashit( $page_url ) );
+}
+
+
+add_filter( 'query_vars', function( $vars ){
+	$vars[] = 'definance_page';
+
+  return $vars;
+} );
+
+function definance_add_rewrite_rules() {
+	$slug = 'definance';
+	if ( get_option('definance_slug') ) {
+		$slug = get_option('definance_slug');
+	}
+  global $wp_rewrite; 
+  $wp_rewrite->flush_rules(); 
+	add_rewrite_rule( $slug . '/?$', 'index.php?definance_page=1','top' );
+
+}
+add_action('init', 'definance_add_rewrite_rules');
+
+
+function definance_include_template( $template ) {
+	if ( get_query_var( 'definance_page' ) ) {
+		$template = DEFINANCE_TEMPLATE_DIR . DIRECTORY_SEPARATOR . "home_new.php";
+	}
+	return $template;
+}
+add_filter( 'template_include', 'definance_include_template');
+/// < Perma link
 
 function definance_shortcode( $attrs ) {
   ob_start();
