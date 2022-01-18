@@ -20,3 +20,6 @@ definance\vendor_source
 ```
 5. Скопировать свежий билд из ```unifactory\build``` в ```definance\vendor_source```
 6. Увеличить версию в файле ```definance\definance.php```
+
+```https://github.com/noxonsu/definance/blob/master/definance.php#L9```
+```https://github.com/noxonsu/definance/blob/master/definance.php#L16```
