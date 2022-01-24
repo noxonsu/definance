@@ -146,8 +146,11 @@
     </script>
 
 <style>
-
-    .sc-bdVaJa {
+/*
+ Fix modal styles from the @reach/dialog npm package.
+ For now we have to find a class hash for each new build and update this selector.
+ */
+    .sc-iemWCZ {
         background: hsla(0, 0%, 0%, 0.33);
         position: fixed;
         top: 0;
