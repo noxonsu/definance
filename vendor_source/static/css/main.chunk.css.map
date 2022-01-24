@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,UACE,mBAAoB,CACpB,UACF","file":"main.chunk.css","sourcesContent":[".disabled {\r\n  pointer-events: none;\r\n  opacity: 0.7;\r\n}\r\n"]}
