@@ -4,19 +4,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/index.html"
   },
   {
-    "revision": "40a0ff64ff8981f151d8",
+    "revision": "bee69d352b43246ac80d",
     "url": "/static/css/3.chunk.css"
   },
   {
-    "revision": "92a084ffb6709e6523f1",
+    "revision": "789fa9df9895f5ecd27f",
     "url": "/static/css/main.chunk.css"
   },
   {
-    "revision": "c774820f782c89984701",
+    "revision": "6112ec25b53a479d44ce",
     "url": "/static/js/0.chunk.js"
   },
   {
-    "revision": "40a0ff64ff8981f151d8",
+    "revision": "bee69d352b43246ac80d",
     "url": "/static/js/3.chunk.js"
   },
   {
@@ -24,11 +24,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "dfa397c51bf460fe9425",
+    "revision": "08636259beb5404a9e6c",
     "url": "/static/js/4.chunk.js"
   },
   {
-    "revision": "135e951260f75e547bfe",
+    "revision": "0254a46ce3cac4259de1",
     "url": "/static/js/5.chunk.js"
   },
   {
@@ -36,15 +36,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/5.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3f950c46e4eff101b7e6",
+    "revision": "d4b2a9b393d5bbb8ebad",
     "url": "/static/js/6.chunk.js"
   },
   {
-    "revision": "9c3f11d6615f4ae72465",
+    "revision": "78f70d4db03726d574ab",
     "url": "/static/js/7.chunk.js"
   },
   {
-    "revision": "92a084ffb6709e6523f1",
+    "revision": "789fa9df9895f5ecd27f",
     "url": "/static/js/main.chunk.js"
   },
   {
@@ -256,8 +256,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/media/coinbaseWalletIcon.62578f59.svg"
   },
   {
-    "revision": "7916caf6d545de0f4c21dbced2ee4fe3",
-    "url": "/static/media/cro.7916caf6.svg"
+    "revision": "f578d9cdc830bae843b72c87b78b4b1c",
+    "url": "/static/media/cro.f578d9cd.svg"
   },
   {
     "revision": "78feb91bfda2ddce6bcfdcbab050995b",
@@ -286,6 +286,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "86b356aa4636232f3e200c65d2a8b6b4",
     "url": "/static/media/eth.86b356aa.png"
+  },
+  {
+    "revision": "3af63018071dc72f01ff1880304ea6ec",
+    "url": "/static/media/ftm.3af63018.svg"
   },
   {
     "revision": "cb9b3252a26b080c4964baeb2b7ff53c",
