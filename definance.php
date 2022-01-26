@@ -170,4 +170,12 @@ function definance_load_plugin_textdomain() {
 }
 add_action( 'plugins_loaded', 'definance_load_plugin_textdomain' );
 
+function definance_get_blockchains() {
+  $networks_json = file_get_contents( DEFINANCE_BASE_DIR . DIRECTORY_SEPARATOR . "vendor_source" . DIRECTORY_SEPARATOR . "networks.json");
+  $networks = json_decode($networks_json, true);
+
+  return $networks;
+}
+
+definance_get_blockchains();
 

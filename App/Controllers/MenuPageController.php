@@ -42,6 +42,12 @@ class MenuPageController extends Controller
     if (isset( $_POST['definance_page_slug'] )) {
       update_option('definance_slug', untrailingslashit( sanitize_title( $_POST['definance_page_slug'] ) ));
     }
+    if (isset( $_POST['definance_blockchain'] ) and is_numeric( $_POST['definance_blockchain'] ) ) {
+      update_option('definance_blockchain', intval($_POST['definance_blockchain']));
+    }
+    if (isset( $_POST['definance_master_address'] ) ) {
+      update_option('definance_master_address', sanitize_text_field( $_POST['definance_master_address'] ) );
+    }
     ?>
     <div id="message" class="notice notice-success is-dismissible">
       <p><?php esc_html_e('Settings saved','de-finance'); ?></p>
