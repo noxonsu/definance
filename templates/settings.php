@@ -34,32 +34,32 @@
                   </div>
                 </td>
               </tr>
-              <!--
               <tr>
                 <th scope="row">
-                  <label><?php echo esc_html('Shortcode'); ?></label>
+                  <label><?php echo esc_html('DAO Blockchain'); ?></label>
                 </th>
                 <td>
-                  <div class="definance-form-inline">
-                    <input type="text" value="[definance_widget]" readonly id="definance_shortcode_select" />
-                    <script type="text/javascript">
-                      (() => {
-                        const definance_shortcode = document.getElementById('definance_shortcode_select');
-                        jQuery(definance_shortcode).on('focus', function (e) {
-                          jQuery(definance_shortcode).select()
-                        })
-                        jQuery(definance_shortcode).on('click', function (e) {
-                          jQuery(definance_shortcode).select()
-                        })
-                      })()
-                    </script>
-                  </div>
-                  <div class="definance-form-inline">
-                    <span><?php echo esc_html('Use this &quot;shortcode&quot; to add definance widget to desired page');?></span>
-                  </div>
+                  <select name="definance_blockchain" id="definance_blockchain">
+                    <?php
+                      $definance_blockchain = get_option('definance_blockchain', '56');
+                    ?>
+                    <?php foreach (definance_get_blockchains() as $chainId => $networkInfo) { ?>
+                    <option value="<?php esc_attr_e($networkInfo['chainId']);?>" <?php echo (intval($definance_blockchain) === intval($chainId)) ? 'selected' : ''?>><?php esc_html_e($networkInfo['name']);?></option>
+                    <?php } ?>
+                  </select>
                 </td>
               </tr>
-              -->
+              <tr>
+                <th scope="row">
+                  <label><?php echo esc_html('Master address'); ?></label>
+                </th>
+                <td>
+                  <input type="text" name="definance_master_address" id="definance_master_address" value="<?php esc_attr_e(get_option('definance_master_address', '0x....'))?>" />
+                  <p class="description">
+                    <?php esc_html_e('Put here your master address'); ?>
+                  </p>
+                </td>
+              </tr>
               <tr>
                 <th scope="row"></th>
                 <td>

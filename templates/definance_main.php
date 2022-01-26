@@ -172,7 +172,8 @@ definance_prepare_vendor();
 ?>
 <script type="text/javascript">
   window.SO_Definance = {}
-  window.SO_Definance.Logo = "<?php echo esc_attr(get_option('definance_icon', '')); ?>"
+  window.SO_Definance.chainId = "<?php echo esc_attr( get_option( 'definance_blockchain' ) ) ?>";
+  window.SO_Definance.masterAddress = "<?php echo esc_attr( get_option( 'definance_master_address' ) ) ?>";
 </script>
 <script src="<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor_cache/<?php echo DEFINANCE_VER?>/3.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
 <script src="<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor_cache/<?php echo DEFINANCE_VER?>/main.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>

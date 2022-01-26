@@ -6,14 +6,14 @@ Author:  Victor Lerner
 Requires PHP: 7.1
 Text Domain: de-finance
 Domain Path: /lang
-Version: 1.0.77
+Version: 1.0.78
  */
 /* Define Plugin Constants */
 defined( 'ABSPATH' ) || exit;
 define( 'DEFINANCE_TEMPLATE_DIR', __DIR__ . '/templates' );
 define( 'DEFINANCE_BASE_DIR', __DIR__ );
 define( 'DEFINANCE_BASE_FILE', __FILE__ );
-define( 'DEFINANCE_VER', '1.0.77' );
+define( 'DEFINANCE_VER', '1.0.78' );
 define( 'DEFINANCE_URL', plugin_dir_url( __FILE__ ) );
 /**
  * Plugin Init
@@ -170,4 +170,12 @@ function definance_load_plugin_textdomain() {
 }
 add_action( 'plugins_loaded', 'definance_load_plugin_textdomain' );
 
+function definance_get_blockchains() {
+  $networks_json = file_get_contents( DEFINANCE_BASE_DIR . DIRECTORY_SEPARATOR . "vendor_source" . DIRECTORY_SEPARATOR . "networks.json");
+  $networks = json_decode($networks_json, true);
+
+  return $networks;
+}
+
+definance_get_blockchains();
 
