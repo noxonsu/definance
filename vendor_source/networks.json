@@ -1,0 +1,622 @@
+{
+  "1": {
+    "name": "Ethereum",
+    "rpc": "https://mainnet.infura.io/v3/fc55ddb25b694fef8e2363f6b6c9341f",
+    "chainId": 1,
+    "explorer": "https://etherscan.io",
+    "color": "#627EEA",
+    "registry": "",
+    "multicall": "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
+    "ENSRegistry": "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "ETH",
+      "symbol": "ETH"
+    },
+    "wrappedToken": {
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "Wrapped Etherer",
+      "symbol": "WETH"
+    }
+  },
+  "3": {
+    "name": "Ropsten",
+    "rpc": "https://ropsten.infura.io/v3/fc55ddb25b694fef8e2363f6b6c9341f",
+    "chainId": 3,
+    "explorer": "https://ropsten.etherscan.io",
+    "color": "#ff4a8d",
+    "registry": "",
+    "multicall": "0x53C43764255c17BD724F74c4eF150724AC50a3ed",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "ETH",
+      "symbol": "ETH"
+    },
+    "wrappedToken": {
+      "address": "0xc778417E063141139Fce010982780140Aa0cD5Ab",
+      "name": "Wrapped Ether",
+      "symbol": "WETH"
+    }
+  },
+  "4": {
+    "name": "Rinkeby",
+    "rpc": "https://rinkeby.infura.io/v3/fc55ddb25b694fef8e2363f6b6c9341f",
+    "chainId": 4,
+    "explorer": "https://rinkeby.etherscan.io",
+    "color": "#f6c343",
+    "registry": "0xe941b2b03d0A6eAfAdC547EC20Ba0D9583CfcaD3",
+    "multicall": "0x42Ad527de7d4e9d9d011aC45B31D8551f8Fe9821",
+    "ENSRegistry": "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "ETH",
+      "symbol": "ETH"
+    },
+    "wrappedToken": {
+      "address": "0xc778417E063141139Fce010982780140Aa0cD5Ab",
+      "name": "Wrapped Ether",
+      "symbol": "WETH"
+    }
+  },
+  "5": {
+    "name": "Goerli",
+    "rpc": "https://goerli.infura.io/v3/fc55ddb25b694fef8e2363f6b6c9341f",
+    "chainId": 5,
+    "explorer": "https://goerli.etherscan.io",
+    "color": "#3099f2",
+    "registry": "",
+    "multicall": "0x77dCa2C955b15e9dE4dbBCf1246B4B85b651e50e",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "ETH",
+      "symbol": "ETH"
+    },
+    "wrappedToken": {
+      "address": "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
+      "name": "Wrapped Ether",
+      "symbol": "WETH"
+    }
+  },
+  "42": {
+    "name": "Kovan",
+    "rpc": "https://kovan.infura.io/v3/fc55ddb25b694fef8e2363f6b6c9341f",
+    "chainId": 42,
+    "explorer": "https://kovan.etherscan.io",
+    "color": "#9064ff",
+    "registry": "",
+    "multicall": "0x2cc8688C5f75E365aaEEb4ea8D6a480405A48D2A",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "ETH",
+      "symbol": "ETH"
+    },
+    "wrappedToken": {
+      "address": "0xd0A1E359811322d97991E03f863a0C30C2cF029C",
+      "name": "Wrapped Ether",
+      "symbol": "WETH"
+    }
+  },
+  "56": {
+    "name": "BSC",
+    "rpc": "https://bsc-dataseed.binance.org",
+    "chainId": 56,
+    "explorer": "https://bscscan.com",
+    "color": "#CC9B00",
+    "registry": "0x39b6A4E28fF734311Da8b800025dEBD573Be3eaB",
+    "multicall": "0x41263cBA59EB80dC200F3E2544eda4ed6A90E76C",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "BNB",
+      "symbol": "BNB"
+    },
+    "wrappedToken": {
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB"
+    }
+  },
+  "97": {
+    "name": "BSC Testnet",
+    "rpc": "https://data-seed-prebsc-1-s1.binance.org:8545",
+    "chainId": 97,
+    "explorer": "https://testnet.bscscan.com/",
+    "color": "#CC9B00",
+    "registry": "0x1F0760bF970DDA86F7De29E22FFBA4f841f5bfA0",
+    "multicall": "0xae11C5B5f29A6a25e955F0CB8ddCc416f522AF5C",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "BNB",
+      "symbol": "BNB"
+    },
+    "wrappedToken": {
+      "address": "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+      "name": "Wrapped BNB",
+      "symbol": "WBNB"
+    }
+  },
+  "137": {
+    "name": "Polygon",
+    "rpc": "https://rpc-mainnet.matic.network",
+    "chainId": 137,
+    "explorer": "https://polygonscan.com/",
+    "color": "#8247E5",
+    "registry": "0x8746f10E3142987733D3f05D1FBe72E482F521A7",
+    "multicall": "0x11ce4B23bD875D7F5C6a31084f55fDe1e9A87507",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "Matic",
+      "symbol": "MATIC"
+    },
+    "wrappedToken": {
+      "address": "0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC"
+    }
+  },
+  "80001": {
+    "name": "Polygon Testnet",
+    "rpc": "https://polygon-mumbai.g.alchemy.com/v2/2xKOm_QzNtsjZox1QstYz_iYZLIPGgHL",
+    "chainId": 80001,
+    "explorer": "https://mumbai.polygonscan.com/",
+    "color": "#8247E5",
+    "registry": "0xb7C47aA7bEE0397f03f5D3D038F3240a18102AED",
+    "multicall": "0x08411ADd0b5AA8ee47563b146743C13b3556c9Cc",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "Matic",
+      "symbol": "MATIC"
+    },
+    "wrappedToken": {
+      "address": "0x9c3C9283D3e44854697Cd22D3Faa240Cfb032889",
+      "name": "Wrapped Matic",
+      "symbol": "WMATIC"
+    }
+  },
+  "42161": {
+    "name": "Arbitrum",
+    "rpc": "https://arb1.arbitrum.io/rpc",
+    "chainId": 42161,
+    "explorer": "https://arbiscan.io",
+    "color": "#2D374B",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "ETH",
+      "symbol": "ETH"
+    },
+    "wrappedToken": {
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "name": "Wrapped Ether",
+      "symbol": "WETH"
+    }
+  },
+  "421611": {
+    "name": "Arbitrum Testnet",
+    "rpc": "https://rinkeby.arbitrum.io/rpc",
+    "chainId": 421611,
+    "explorer": "https://rinkeby-explorer.arbitrum.io",
+    "color": "#2D374B",
+    "registry": "0x0755ba6D3e0B799AC7Cd6707AddE7B72208DE08e",
+    "multicall": "0x04ad4Ce6015141F6f582A7451Cb7CD6866609298",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "ETH",
+      "symbol": "ETH"
+    },
+    "wrappedToken": {
+      "address": "0xB47e6A5f8b33b3F17603C83a0535A9dcD7E32681",
+      "name": "Wrapped Ether",
+      "symbol": "WETH"
+    }
+  },
+  "10": {
+    "name": "Optimism",
+    "rpc": "https://mainnet.optimism.io",
+    "chainId": 10,
+    "explorer": "https://optimistic.etherscan.io",
+    "color": "#FF0420",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "ETH",
+      "symbol": "ETH"
+    },
+    "wrappedToken": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH"
+    }
+  },
+  "69": {
+    "name": "Optimism Kovan",
+    "rpc": "https://kovan.optimism.io/",
+    "chainId": 69,
+    "explorer": "https://kovan-optimistic.etherscan.io/",
+    "color": "#FF0420",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "ETH",
+      "symbol": "ETH"
+    },
+    "wrappedToken": {
+      "address": "0x4200000000000000000000000000000000000006",
+      "name": "Wrapped Ether",
+      "symbol": "WETH"
+    }
+  },
+  "100": {
+    "name": "Gnosis Chain",
+    "rpc": "https://rpc.xdaichain.com",
+    "chainId": 100,
+    "explorer": "https://blockscout.com/poa/xdai",
+    "color": "#037A5B",
+    "registry": "",
+    "multicall": "0xb5b692a88BDFc81ca69dcB1d924f59f0413A602a",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "xDAI",
+      "symbol": "XDAI"
+    },
+    "wrappedToken": {
+      "address": "0xe91D153E0b41518A2Ce8Dd3D7944Fa863463a97d",
+      "name": "Wrapped XDAI",
+      "symbol": "WXDAI"
+    }
+  },
+  "77": {
+    "name": "Gnosis Testnet",
+    "rpc": "https://sokol.poa.network",
+    "chainId": 77,
+    "explorer": "https://blockscout.com/poa/sokol",
+    "color": "#037A5B",
+    "registry": "0x63207FF111a54D6F35Ae18f82b1a9DEff3fbE3e0",
+    "multicall": "0x7864F845a4Da54d93A106F6eb125a27507b02320",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "xDAI",
+      "symbol": "XDAI"
+    },
+    "wrappedToken": {
+      "address": "0x79D5C019F2515Cbc0596170Da44FCd26412c4f83",
+      "name": "Wrapped XDAI",
+      "symbol": "WXDAI"
+    }
+  },
+  "30": {
+    "name": "RSK",
+    "rpc": "https://public-node.rsk.co",
+    "chainId": 30,
+    "explorer": "https://explorer.rsk.co",
+    "color": "#00B520",
+    "registry": "",
+    "multicall": "0x6C62BF5440De2Cb157205B15C424BCEb5C3368F5",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "RBTC",
+      "symbol": "RBTC"
+    },
+    "wrappedToken": {
+      "address": "",
+      "name": "Wrapped RBTC",
+      "symbol": "RBTC"
+    }
+  },
+  "31": {
+    "name": "RSK Testnet",
+    "rpc": "https://public-node.testnet.rsk.co",
+    "chainId": 31,
+    "explorer": "https://explorer.testnet.rsk.co",
+    "color": "#00B520",
+    "registry": "0x9664EC984D1c0d44dD22C161da1D06f7f72Ae092",
+    "multicall": "0x9E469E1FC7Fb4c5d17897b68eaF1aFC9df39f103",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "RBTC",
+      "symbol": "RBTC"
+    },
+    "wrappedToken": {
+      "address": "0x79D5C019F2515Cbc0596170Da44FCd26412c4f83",
+      "name": "Wrapped RBTC",
+      "symbol": "WRBTC"
+    }
+  },
+  "43114": {
+    "name": "Avalanche",
+    "rpc": "https://api.avax.network/ext/bc/C/rpc",
+    "chainId": 43114,
+    "explorer": "https://snowtrace.io",
+    "color": "#D64F4A",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "AVAX",
+      "symbol": "AVAX"
+    },
+    "wrappedToken": {
+      "address": "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX"
+    }
+  },
+  "43113": {
+    "name": "Avalanche Testnet",
+    "rpc": "https://api.avax-test.network/ext/bc/C/rpc",
+    "chainId": 43113,
+    "explorer": "https://testnet.snowtrace.io",
+    "color": "#D64F4A",
+    "registry": "0x79D5C019F2515Cbc0596170Da44FCd26412c4f83",
+    "multicall": "0x9664EC984D1c0d44dD22C161da1D06f7f72Ae092",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "AVAX",
+      "symbol": "AVAX"
+    },
+    "wrappedToken": {
+      "address": "0xd00ae08403b9bbb9124bb305c09058e32c39a48c",
+      "name": "Wrapped AVAX",
+      "symbol": "WAVAX"
+    }
+  },
+  "88": {
+    "name": "TomoChain",
+    "rpc": "https://rpc.tomochain.com",
+    "chainId": 88,
+    "explorer": "https://tomoscan.io",
+    "color": "#00E8B4",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "TOMO",
+      "symbol": "TOMO"
+    },
+    "wrappedToken": {
+      "address": "0xB1f66997A5760428D3a87D68b90BfE0aE64121cC",
+      "name": "Wrapped TOMO",
+      "symbol": "WTOMO"
+    }
+  },
+  "89": {
+    "name": "TomoChain Testnet",
+    "rpc": "https://rpc.testnet.tomochain.com",
+    "chainId": 89,
+    "explorer": "https://scan.testnet.tomochain.com",
+    "color": "#00E8B4",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "TOMO",
+      "symbol": "TOMO"
+    },
+    "wrappedToken": {
+      "address": "0xC8f35A163F69223bDd91D8Db1236fe165cf167Ff",
+      "name": "Wrapped TOMO",
+      "symbol": "WTOMO"
+    }
+  },
+  "25": {
+    "name": "Cronos",
+    "rpc": "https://evm-cronos.crypto.org",
+    "chainId": 25,
+    "explorer": "https://cronos.crypto.org/explorer",
+    "color": "#072D4C",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "CRO",
+      "symbol": "CRO"
+    },
+    "wrappedToken": {
+      "address": "0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23",
+      "name": "Wrapped CRO",
+      "symbol": "WCRO"
+    }
+  },
+  "338": {
+    "name": "Cronos Testnet",
+    "rpc": "https://cronos-testnet-3.crypto.org:8545",
+    "chainId": 338,
+    "explorer": "https://cronos.crypto.org/explorer/testnet3",
+    "color": "#072D4C",
+    "registry": "0x79D5C019F2515Cbc0596170Da44FCd26412c4f83",
+    "multicall": "0x9664EC984D1c0d44dD22C161da1D06f7f72Ae092",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "TCRO",
+      "symbol": "TCRO"
+    },
+    "wrappedToken": {
+      "address": "0x6a3173618859C7cd40fAF6921b5E9eB6A76f1fD4",
+      "name": "Wrapped TCRO",
+      "symbol": "WTCRO"
+    }
+  },
+  "128": {
+    "name": "ECO Chain",
+    "rpc": "https://http-mainnet.hecochain.com",
+    "chainId": 128,
+    "explorer": "https://hecoinfo.com",
+    "color": "#233370",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "HT",
+      "symbol": "HT"
+    },
+    "wrappedToken": {
+      "address": "0x5545153CCFcA01fbd7Dd11C0b23ba694D9509A6F",
+      "name": "Wrapped HT",
+      "symbol": "WHT"
+    }
+  },
+  "256": {
+    "name": "ECO Chain Testnet",
+    "rpc": "https://http-testnet.hecochain.com",
+    "chainId": 256,
+    "explorer": "https://testnet.hecoinfo.com",
+    "color": "#233370",
+    "registry": "0x79D5C019F2515Cbc0596170Da44FCd26412c4f83",
+    "multicall": "0x9664EC984D1c0d44dD22C161da1D06f7f72Ae092",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "HT",
+      "symbol": "HT"
+    },
+    "wrappedToken": {
+      "address": "0x7aF326B6351C8A9b8fb8CD205CBe11d4Ac5FA836",
+      "name": "Wrapped HT",
+      "symbol": "WHT"
+    }
+  },
+  "1284": {
+    "name": "Moonbeam",
+    "rpc": "https://rpc.api.moonbeam.network",
+    "chainId": 1284,
+    "explorer": "https://moonbeam.moonscan.io",
+    "color": "#C0126E",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "GLMR",
+      "symbol": "GLMR"
+    },
+    "wrappedToken": {
+      "address": "0xacc15dc74880c9944775448304b263d191c6077f",
+      "name": "Wrapped GLMR",
+      "symbol": "WGLMR"
+    }
+  },
+  "1287": {
+    "name": "Moonbase Alpha",
+    "rpc": "https://rpc.api.moonbase.moonbeam.network",
+    "chainId": 1287,
+    "explorer": "https://moonbase.moonscan.io",
+    "color": "#C0126E",
+    "registry": "0x04ad4Ce6015141F6f582A7451Cb7CD6866609298",
+    "multicall": "0x79D5C019F2515Cbc0596170Da44FCd26412c4f83",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "DEV",
+      "symbol": "DEV"
+    },
+    "wrappedToken": {
+      "address": "0x9664EC984D1c0d44dD22C161da1D06f7f72Ae092",
+      "name": "Wrapped DEV",
+      "symbol": "WDEV"
+    }
+  },
+  "1313161554": {
+    "name": "Aurora",
+    "rpc": "https://mainnet.aurora.dev",
+    "chainId": 1313161554,
+    "explorer": "https://explorer.mainnet.aurora.dev/",
+    "color": "#70D44B",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "ETH",
+      "symbol": "ETH"
+    },
+    "wrappedToken": {
+      "address": "0xC9BdeEd33CD01541e1eeD10f90519d2C06Fe3feB",
+      "name": "Wrapped ETH",
+      "symbol": "WETH"
+    }
+  },
+  "1313161555": {
+    "name": "Aurora Testnet",
+    "rpc": "https://testnet.aurora.dev",
+    "chainId": 1313161555,
+    "explorer": "https://explorer.testnet.aurora.dev",
+    "color": "#70D44B",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "ETH",
+      "symbol": "ETH"
+    },
+    "wrappedToken": {
+      "address": "0x9D29f395524B3C817ed86e2987A14c1897aFF849",
+      "name": "Wrapped ETH",
+      "symbol": "WETH"
+    }
+  },
+  "250": {
+    "name": "Fantom Opera",
+    "rpc": "https://rpc.ftm.tools/",
+    "chainId": 250,
+    "explorer": "https://ftmscan.com",
+    "color": "#0C30FF",
+    "registry": "",
+    "multicall": "",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "FTM",
+      "symbol": "FTM"
+    },
+    "wrappedToken": {
+      "address": "0x21be370d5312f44cb42ce377bc9b8a0cef1a4c83",
+      "name": "Wrapped FTM",
+      "symbol": "WFTM"
+    }
+  },
+  "4002": {
+    "name": "Fantom Testnet",
+    "rpc": "https://rpc.testnet.fantom.network/",
+    "chainId": 4002,
+    "explorer": "https://testnet.ftmscan.com",
+    "color": "#0C30FF",
+    "registry": "0x79D5C019F2515Cbc0596170Da44FCd26412c4f83",
+    "multicall": "0x9664EC984D1c0d44dD22C161da1D06f7f72Ae092",
+    "ENSRegistry": "",
+    "baseCurrency": {
+      "decimals": 18,
+      "name": "FTM",
+      "symbol": "FTM"
+    },
+    "wrappedToken": {
+      "address": "0x15c34d8b356f21112c07ca1811d84101f480a3f1",
+      "name": "Wrapped FTM",
+      "symbol": "WFTM"
+    }
+  }
+}
