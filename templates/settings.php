@@ -36,7 +36,7 @@
               </tr>
               <tr>
                 <th scope="row">
-                  <label><?php echo esc_html('DAO Blockchain'); ?></label>
+                  <label><?php echo esc_html('Blockchain'); ?></label>
                 </th>
                 <td>
                   <select name="definance_blockchain" id="definance_blockchain">
