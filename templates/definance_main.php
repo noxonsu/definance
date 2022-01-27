@@ -150,7 +150,8 @@
  Fix modal styles from the @reach/dialog npm package.
  For now we have to find a class hash for each new build and update this selector.
  */
-    .sc-iemWCZ {
+    .sc-bkbkJK,
+    .hpGtei {
         background: hsla(0, 0%, 0%, 0.33);
         position: fixed;
         top: 0;
@@ -158,6 +159,12 @@
         bottom: 0;
         left: 0;
         overflow: auto;
+    }
+
+    .disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.6;
     }
 
     <?php if(is_user_logged_in()){ ?>
