@@ -45,6 +45,12 @@ class MenuPageController extends Controller
     if (isset( $_POST['definance_blockchain'] ) and is_numeric( $_POST['definance_blockchain'] ) ) {
       update_option('definance_blockchain', intval($_POST['definance_blockchain']));
     }
+	if (isset( $_POST['definance_blockchain2'] ) and is_numeric( $_POST['definance_blockchain2'] ) ) {
+      update_option('definance_blockchain2', intval($_POST['definance_blockchain2']));
+    }
+	if (isset( $_POST['definance_blockchain3'] ) and is_numeric( $_POST['definance_blockchain3'] ) ) {
+      update_option('definance_blockchain3', intval($_POST['definance_blockchain3']));
+    }
     if (isset( $_POST['definance_master_address'] ) ) {
       update_option('definance_master_address', sanitize_text_field( $_POST['definance_master_address'] ) );
     }

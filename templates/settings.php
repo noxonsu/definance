@@ -36,7 +36,7 @@
               </tr>
               <tr>
                 <th scope="row">
-                  <label><?php echo esc_html('Blockchain'); ?></label>
+                  <label><?php echo esc_html('Availbale networks'); ?></label>
                 </th>
                 <td>
                   <select name="definance_blockchain" id="definance_blockchain">
@@ -46,7 +46,25 @@
                     <?php foreach (definance_get_blockchains() as $chainId => $networkInfo) { ?>
                     <option value="<?php esc_attr_e($networkInfo['chainId']);?>" <?php echo (intval($definance_blockchain) === intval($chainId)) ? 'selected' : ''?>><?php esc_html_e($networkInfo['name']);?></option>
                     <?php } ?>
-                  </select>
+                  </select> <Br>
+				  <select name="definance_blockchain" id="definance_blockchain2">
+				    <option value='0'>Select</option>
+                    <?php
+                      $definance_blockchain2 = get_option('definance_blockchain2', '0');
+                    ?>
+                    <?php foreach (definance_get_blockchains() as $chainId => $networkInfo) { ?>
+                    <option value="<?php esc_attr_e($networkInfo['chainId']);?>" <?php echo (intval($definance_blockchain2) === intval($chainId)) ? 'selected' : ''?>><?php esc_html_e($networkInfo['name']);?></option>
+                    <?php } ?>
+                  </select> <Br>
+				  <select name="definance_blockchain" id="definance_blockchain3">
+					<option value='0'>Select</option>
+                    <?php
+                      $definance_blockchain3 = get_option('definance_blockchain3', '0');
+                    ?>
+                    <?php foreach (definance_get_blockchains() as $chainId => $networkInfo) { ?>
+                    <option value="<?php esc_attr_e($networkInfo['chainId']);?>" <?php echo (intval($definance_blockchain3) === intval($chainId)) ? 'selected' : ''?>><?php esc_html_e($networkInfo['name']);?></option>
+                    <?php } ?>
+                  </select> <Br> <?php echo esc_html('Need more or a network not in the list? Contact support@onout.org'); ?>
                 </td>
               </tr>
               <tr>
