@@ -34,32 +34,34 @@ class MenuPageController extends Controller
 
   public function handleRequest()
   {
-    if (isset( $_POST['definance_as_homepage'] ) and ( $_POST['definance_as_homepage'] == 'on' ) ) {
-      update_option('definance_as_homepage', 'true');
-    } else {
-      delete_option('definance_as_homepage');
+    if (isset($_POST['definance_save_setting'])) {
+      if (isset( $_POST['definance_as_homepage'] ) and ( $_POST['definance_as_homepage'] == 'on' ) ) {
+        update_option('definance_as_homepage', 'true');
+      } else {
+        delete_option('definance_as_homepage');
+      }
+      if (isset( $_POST['definance_page_slug'] )) {
+        update_option('definance_slug', untrailingslashit( sanitize_title( $_POST['definance_page_slug'] ) ));
+      }
+      if (isset( $_POST['definance_blockchain'] ) and is_numeric( $_POST['definance_blockchain'] ) ) {
+        update_option('definance_blockchain', intval($_POST['definance_blockchain']));
+      }
+      if (isset( $_POST['definance_blockchain2'] ) and is_numeric( $_POST['definance_blockchain2'] ) ) {
+        update_option('definance_blockchain2', intval($_POST['definance_blockchain2']));
+      }
+      if (isset( $_POST['definance_blockchain3'] ) and is_numeric( $_POST['definance_blockchain3'] ) ) {
+        update_option('definance_blockchain3', intval($_POST['definance_blockchain3']));
+      }
+      if (isset( $_POST['definance_master_address'] ) ) {
+        update_option('definance_master_address', sanitize_text_field( $_POST['definance_master_address'] ) );
+      }
+    
+      ?>
+      <div id="message" class="notice notice-success is-dismissible">
+        <p><?php esc_html_e('Settings saved','de-finance'); ?></p>
+      </div>
+      <?php
     }
-    if (isset( $_POST['definance_page_slug'] )) {
-      update_option('definance_slug', untrailingslashit( sanitize_title( $_POST['definance_page_slug'] ) ));
-    }
-    if (isset( $_POST['definance_blockchain'] ) and is_numeric( $_POST['definance_blockchain'] ) ) {
-      update_option('definance_blockchain', intval($_POST['definance_blockchain']));
-    }
-	if (isset( $_POST['definance_blockchain2'] ) and is_numeric( $_POST['definance_blockchain2'] ) ) {
-      update_option('definance_blockchain2', intval($_POST['definance_blockchain2']));
-    }
-	if (isset( $_POST['definance_blockchain3'] ) and is_numeric( $_POST['definance_blockchain3'] ) ) {
-      update_option('definance_blockchain3', intval($_POST['definance_blockchain3']));
-    }
-    if (isset( $_POST['definance_master_address'] ) ) {
-      update_option('definance_master_address', sanitize_text_field( $_POST['definance_master_address'] ) );
-    }
-    ?>
-    <div id="message" class="notice notice-success is-dismissible">
-      <p><?php esc_html_e('Settings saved','de-finance'); ?></p>
-    </div>
-    <?php
-
   }
 
 

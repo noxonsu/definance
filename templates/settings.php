@@ -1,5 +1,5 @@
 <div class="wrap">
-  <div class="welcome-panel">
+  <div class="">
     <h2><?php echo esc_html(get_admin_page_title()); ?></h2>
     <h2 class="nav-tab-wrapper definance-nav-tabs wp-clearfix">
       <a href="#definance-tab-1" class="nav-tab nav-tab-active">
@@ -7,9 +7,10 @@
       </a>
     </h2>
 
-    <div class="welcome-panel-column-container definance-panel-tab panel-tab-active" id="definance-tab-1">
+    <div class="definance-panel-tab panel-tab-active" id="definance-tab-1">
       <div class="definance-shortcode-panel-row">
         <form action="#" method="post" class="wp-definance-widget-form">
+          <input type="hidden" name="definance_save_setting" value="yes" />
           <table class="form-table">
             <tbody>
               <tr>
@@ -46,18 +47,20 @@
                     <?php foreach (definance_get_blockchains() as $chainId => $networkInfo) { ?>
                     <option value="<?php esc_attr_e($networkInfo['chainId']);?>" <?php echo (intval($definance_blockchain) === intval($chainId)) ? 'selected' : ''?>><?php esc_html_e($networkInfo['name']);?></option>
                     <?php } ?>
-                  </select> <Br>
-				  <select name="definance_blockchain2" id="definance_blockchain2">
-				    <option value='0'>Select</option>
+                  </select>
+                  <br />
+                  <select name="definance_blockchain2" id="definance_blockchain2">
+                  <option value='0'>Select</option>
                     <?php
                       $definance_blockchain2 = get_option('definance_blockchain2', '0');
                     ?>
                     <?php foreach (definance_get_blockchains() as $chainId => $networkInfo) { ?>
                     <option value="<?php esc_attr_e($networkInfo['chainId']);?>" <?php echo (intval($definance_blockchain2) === intval($chainId)) ? 'selected' : ''?>><?php esc_html_e($networkInfo['name']);?></option>
                     <?php } ?>
-                  </select> <Br>
-				  <select name="definance_blockchain3" id="definance_blockchain3">
-					<option value='0'>Select</option>
+                  </select>
+                  <br />
+                  <select name="definance_blockchain3" id="definance_blockchain3">
+                  <option value='0'>Select</option>
                     <?php
                       $definance_blockchain3 = get_option('definance_blockchain3', '0');
                     ?>
