@@ -19,7 +19,7 @@
                 </th>
                 <td>
                   <code><?php echo esc_url( home_url('/') );?></code>
-									<input name="definance_page_slug" type="text" value="<?php echo esc_attr( definance_page_slug() );?>" class="regular-text code" <?php disabled( get_option( 'definance_as_homepage' ), 'true' ); ?>>
+									<input name="definance_page_slug" id="definance_page_slug" type="text" value="<?php echo esc_attr( definance_page_slug() );?>" class="regular-text code" <?php disabled( get_option( 'definance_as_homepage' ), 'true' ); ?>>
 									<code>/</code>
 									<a href="<?php echo definance_page_url();?>" class="button mcwallet-button-url<?php if( get_option( 'definance_as_homepage' ) ) { echo ' disabled';}?>" target="_blank"><?php esc_html_e( 'View page', 'definance' );?></a>
                 </td>
@@ -32,6 +32,17 @@
                   <div class="definance-form-inline">
                     <input type="checkbox" name="definance_as_homepage" id="definance_as_homepage" <?php echo (get_option('definance_as_homepage', 'false') == 'true') ? 'checked' : '' ?> />
                     <label for="definance_as_homepage"><?php echo esc_html('Show at front home page'); ?></label>
+                    <script type="text/javascript">
+                      (($) => {
+                        $('#definance_as_homepage').on('change', function (e) {
+                          if ($('#definance_as_homepage')[0].checked) {
+                            $('#definance_page_slug').attr('disabled', true)
+                          } else {
+                            $('#definance_page_slug').attr('disabled', false)
+                          }
+                        })
+                      })(jQuery)
+                    </script>
                   </div>
                 </td>
               </tr>
