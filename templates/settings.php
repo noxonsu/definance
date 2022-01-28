@@ -47,7 +47,7 @@
                     <option value="<?php esc_attr_e($networkInfo['chainId']);?>" <?php echo (intval($definance_blockchain) === intval($chainId)) ? 'selected' : ''?>><?php esc_html_e($networkInfo['name']);?></option>
                     <?php } ?>
                   </select> <Br>
-				  <select name="definance_blockchain" id="definance_blockchain2">
+				  <select name="definance_blockchain2" id="definance_blockchain2">
 				    <option value='0'>Select</option>
                     <?php
                       $definance_blockchain2 = get_option('definance_blockchain2', '0');
@@ -56,7 +56,7 @@
                     <option value="<?php esc_attr_e($networkInfo['chainId']);?>" <?php echo (intval($definance_blockchain2) === intval($chainId)) ? 'selected' : ''?>><?php esc_html_e($networkInfo['name']);?></option>
                     <?php } ?>
                   </select> <Br>
-				  <select name="definance_blockchain" id="definance_blockchain3">
+				  <select name="definance_blockchain3" id="definance_blockchain3">
 					<option value='0'>Select</option>
                     <?php
                       $definance_blockchain3 = get_option('definance_blockchain3', '0');
