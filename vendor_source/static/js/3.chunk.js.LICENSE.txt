@@ -36,6 +36,8 @@ object-assign
  * 
  */
 
+/*! crc32.js (C) 2014-present SheetJS -- http://sheetjs.com */
+
 /*! decimal.js-light v2.5.1 https://github.com/MikeMcl/decimal.js-light/LICENCE */
 
 /*! https://mths.be/punycode v1.4.1 by @mathias */
