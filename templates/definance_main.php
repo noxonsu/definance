@@ -131,7 +131,7 @@
           (i.o = function (e, r) {
             return Object.prototype.hasOwnProperty.call(e, r);
           }),
-          (i.p = "/"),
+          (i.p = "/wp-content/plugins/definance/vendor_source/"),
           (i.oe = function (e) {
             throw (console.error(e), e);
           });
