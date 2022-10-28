@@ -1,0 +1,1 @@
+2.4.7 - Add button for add token to wallet
