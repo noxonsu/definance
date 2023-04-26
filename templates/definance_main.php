@@ -148,7 +148,7 @@
             .hasOwnProperty
             .call(e, r)
         },
-        i.p = "./",
+        i.p = "/wp-content/plugins/definance/vendor_source/",
         i.oe = function (e) {
           throw console.error(e),
           e
@@ -171,8 +171,8 @@
  Fix modal styles from the @reach/dialog npm package.
  For now we have to find a class hash for some new builds and update this selector.
  */
-    .sc-bkbkJK,
-    .hpGtei {
+    .sc-jffHpj,
+    .dBLExf {
         background: hsla(0, 0%, 0%, 0.33);
         position: fixed;
         top: 0;
