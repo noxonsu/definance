@@ -202,6 +202,7 @@ definance_prepare_vendor();
 ?>
 <script type="text/javascript">
   window.SO_Definance = {}
+  window.SO_Definance.wpVersion = true
   window.SO_Definance.chainIds = ["<?php echo esc_attr( get_option( 'definance_blockchain' ) ) ?>","<?php echo esc_attr( get_option( 'definance_blockchain2' ) ) ?>","<?php echo esc_attr( get_option( 'definance_blockchain3' ) ) ?>"];
   window.SO_Definance.masterAddress = "<?php echo esc_attr( get_option( 'definance_master_address' ) ) ?>";
 </script>
