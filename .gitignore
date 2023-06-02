@@ -1,2 +1,4 @@
 
 vendor_cache/*/*
+unifactory/*
+.env
