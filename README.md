@@ -4,9 +4,10 @@
 ```
 git clone https://github.com/noxonsu/unifactory
 ```
-2. Устанавливаем зависимости
+2. Переключаем версию ноды и устанавливаем зависимости 
 ```
 cd unifactory
+nvm use
 npm i
 ```
 3. Делаем чистый билд
