@@ -4,15 +4,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./index.html"
   },
   {
-    "revision": "abf2147a921c548c597d",
+    "revision": "84e043e3e93e5142680d",
     "url": "./static/css/3.chunk.css"
   },
   {
-    "revision": "d600617dad7c9fafee97",
+    "revision": "85e0dea5f1bcdb12535e",
     "url": "./static/css/main.chunk.css"
   },
   {
-    "revision": "137ff61a981717347b80",
+    "revision": "c1aca7a8d2069e433c9b",
     "url": "./static/js/0.chunk.js"
   },
   {
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/js/0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "abf2147a921c548c597d",
+    "revision": "84e043e3e93e5142680d",
     "url": "./static/js/3.chunk.js"
   },
   {
@@ -28,7 +28,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/js/3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ac0471f2137166756a06",
+    "revision": "363cdf796a1cf09a6db8",
     "url": "./static/js/4.chunk.js"
   },
   {
@@ -36,7 +36,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/js/4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5bd0d5e1684ef5546eec",
+    "revision": "dc13396d4b9b770f5e67",
     "url": "./static/js/5.chunk.js"
   },
   {
@@ -44,11 +44,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/js/5.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9eb40d9e261df75634de",
+    "revision": "574bfbc53fe1c0c93f9c",
     "url": "./static/js/6.chunk.js"
   },
   {
-    "revision": "d600617dad7c9fafee97",
+    "revision": "85e0dea5f1bcdb12535e",
     "url": "./static/js/main.chunk.js"
   },
   {
@@ -246,6 +246,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "2565884a03843bf5f37bf4a806402acf",
     "url": "./static/media/avax.2565884a.png"
+  },
+  {
+    "revision": "8da1bd872a0e586c460abd0a06567bff",
+    "url": "./static/media/baseEth.8da1bd87.svg"
   },
   {
     "revision": "904b44c2b22eb2d49f618396e6f2db1a",
