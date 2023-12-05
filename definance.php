@@ -6,14 +6,14 @@ Author:  Victor Lerner
 Requires PHP: 7.1
 Text Domain: de-finance
 Domain Path: /lang
-Version: 2.6.5
+Version: 2.6.6
  */
 /* Define Plugin Constants */
 defined( 'ABSPATH' ) || exit;
 define( 'DEFINANCE_TEMPLATE_DIR', __DIR__ . '/templates' );
 define( 'DEFINANCE_BASE_DIR', __DIR__ );
 define( 'DEFINANCE_BASE_FILE', __FILE__ );
-define( 'DEFINANCE_VER', '2.6.5' );
+define( 'DEFINANCE_VER', '2.6.6' );
 define( 'DEFINANCE_URL', plugin_dir_url( __FILE__ ) );
 /**
  * Plugin Init
@@ -50,8 +50,8 @@ function definance_add_rewrite_rules() {
 	if ( get_option('definance_slug') ) {
 		$slug = get_option('definance_slug');
 	}
-  global $wp_rewrite; 
-  $wp_rewrite->flush_rules(); 
+  global $wp_rewrite;
+  $wp_rewrite->flush_rules();
 	add_rewrite_rule( $slug . '/?$', 'index.php?definance_page=1','top' );
 
 }
