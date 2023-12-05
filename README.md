@@ -8,7 +8,7 @@ git clone https://github.com/noxonsu/unifactory
 ```
 cd unifactory
 nvm use
-npm i
+npm i --legacy-peer-deps
 ```
 3. Делаем чистый билд
 ```
