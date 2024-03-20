@@ -5,13 +5,13 @@
 git clone https://github.com/noxonsu/unifactory
 ```
 2. Переключаем версию ноды и устанавливаем зависимости 
-```
+```bash
 cd unifactory
-nvm use
+nvm use 16
 npm i --legacy-peer-deps
 ```
 3. Делаем чистый билд
-```
+```bash
 npm run build_clean
 ```
 
