@@ -24,3 +24,21 @@ definance\vendor_source
 
 ```https://github.com/noxonsu/definance/blob/master/definance.php#L9```
 ```https://github.com/noxonsu/definance/blob/master/definance.php#L16```
+
+## Wallet Apps Bridge (MCW iframe mode)
+
+Для открытия DeFinance внутри MultiCurrencyWallet `#/apps` добавлен клиентский адаптер:
+
+- `vendor_source/wallet-apps-bridge-client.js`
+- подключение в `vendor_source/index.html` до загрузки `main.chunk.js`
+- подключение в `templates/definance_main.php` (WordPress режим)
+
+Адаптер активируется только если одновременно:
+- приложение открыто в iframe (`window.parent !== window`)
+- в URL есть `walletBridge=swaponline`
+
+Поддержка origin allowlist:
+- runtime: `window.SO_DefinanceBridgeConfig.allowedHostOrigins = ['https://wallet.example']`
+- runtime override: `window.SO_WalletAppsAllowedOrigins = ['https://wallet.example']`
+- query: `?walletBridge=swaponline&walletBridgeAllowedOrigins=https://wallet.example,https://wallet2.example`
+- WordPress option: `definance_wallet_bridge_allowed_origins` (строка CSV), пробрасывается в `window.SO_Definance.walletBridgeAllowedOrigins`

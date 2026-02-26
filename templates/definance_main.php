@@ -205,6 +205,8 @@ definance_prepare_vendor();
   window.SO_Definance.wpVersion = true
   window.SO_Definance.chainIds = ["<?php echo esc_attr( get_option( 'definance_blockchain' ) ) ?>","<?php echo esc_attr( get_option( 'definance_blockchain2' ) ) ?>","<?php echo esc_attr( get_option( 'definance_blockchain3' ) ) ?>"];
   window.SO_Definance.masterAddress = "<?php echo esc_attr( get_option( 'definance_master_address' ) ) ?>";
+  window.SO_Definance.walletBridgeAllowedOrigins = "<?php echo esc_attr( get_option( 'definance_wallet_bridge_allowed_origins' ) ) ?>";
 </script>
+<script src="<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor_source/wallet-apps-bridge-client.js?ver=<?php echo DEFINANCE_VER ?>"></script>
 <script src="<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor_cache/<?php echo DEFINANCE_VER?>/3.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
 <script src="<?php echo esc_url( plugin_dir_url( DEFINANCE_BASE_FILE ) ); ?>vendor_cache/<?php echo DEFINANCE_VER?>/main.chunk.js?ver=<?php echo DEFINANCE_VER ?>"></script>
