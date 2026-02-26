@@ -1,0 +1,62 @@
+name: Build and Deploy DeFinance
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-unifactory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout definance
+        uses: actions/checkout@v3
+        path: definance
+
+      - name: Checkout unifactory
+        uses: actions/checkout@v3
+        with:
+          repository: noxonsu/unifactory
+          path: unifactory
+
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Build unifactory
+        run: |
+          cd unifactory
+          npm i --legacy-peer-deps
+          npm run build_clean
+
+      - name: Copy build to vendor_source
+        run: |
+          rm -rf definance/vendor_source/*
+          cp -r unifactory/build/* definance/vendor_source/
+
+      - name: Update version in definance.php
+        run: |
+          cd definance
+          VERSION=$(date +%Y%m%d%H%M)
+          sed -i "s/Version: .*/Version: 2.6.$VERSION/" definance.php
+          sed -i "s/define( 'DEFINANCE_VER', '.*' )/define( 'DEFINANCE_VER', '2.6.$VERSION' )/" definance.php
+
+      - name: Commit and push changes
+        run: |
+          cd definance
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add vendor_source/ definance.php
+          git commit -m "Auto-build: Update unifactory build $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes"
+          git push
+
+      - name: Deploy to WordPress server
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 95.217.227.162 >> ~/.ssh/known_hosts
+          ssh root@95.217.227.162 "cd /home/definance/web/definance.wpmix.net/public_html/definance/ && git pull origin main || git pull origin master"
