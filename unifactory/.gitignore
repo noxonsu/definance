@@ -1,0 +1,22 @@
+# dependencies
+/node_modules
+/node_modules_
+
+# production
+/build
+
+# misc
+.idea
+.secret
+.env.local
+.env.production.local
+.shadow
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+package-lock.json-
+screenshots
+
+.eslintcache

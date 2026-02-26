@@ -1,4 +1,4 @@
 .idea
 vendor_cache/*/*
-unifactory/*
 .env
+node_modules/

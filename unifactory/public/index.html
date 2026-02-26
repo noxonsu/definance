@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <link rel="shortcut icon" id="favicon" type="image/png" href="%PUBLIC_URL%/favicon.png"/>
+    <link rel="apple-touch-icon" sizes="192x192" href="%PUBLIC_URL%/images/192x192_App_Icon.png"/>
+    <link rel="apple-touch-icon" sizes="512x512" href="%PUBLIC_URL%/images/512x512_App_Icon.png"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#000"/>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"/>
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
+    <title>Exchange</title>
+    <script>
+      const { hostname, protocol, href } = window.location
+      const domain = hostname || document.location.host
+      const DOMAIN_TITLES = {
+        'internethedgefund.com': 'IHF Swap',
+        'eeecex.net': 'eeecEx'
+      }
+
+      if (!!DOMAIN_TITLES[domain]) {
+        document.title = DOMAIN_TITLES[domain]
+      }
+      
+      // if $_GET['ref'] is set, save it to localStorage
+      if (window.location.search) {
+        const ref = window.location.search.split('?ref=')[1]
+        if (ref) {
+          localStorage.setItem('ref', ref)
+        }
+      }
+
+      if (hostname !== 'localhost' && protocol !== 'https:') {
+        location.replace(`https:${href.substring(protocol.length)}`)
+      }
+
+      // Set favicon
+      let favicon = document.getElementById('favicon')
+
+      if (!favicon) {
+        favicon = document.createElement('link')
+        favicon.rel = 'shortcut icon'
+        favicon.id = 'favicon'
+        favicon.type = 'image/png'
+        document
+          .getElementsByTagName('head')[0]
+          .appendChild(favicon)
+      }
+
+      const faviconUrl = localStorage.getItem('faviconUrl')
+      if (faviconUrl) {
+        favicon.href = faviconUrl
+      }
+    </script>
+    <script>
+      // Bridge auto-connect: dynamically load wallet bridge client when running inside MCW iframe
+      // This must execute before React app mounts so window.ethereum is available for useEagerConnect()
+      (function() {
+        var search = window.location.search;
+        var isBridgeMode = search.indexOf('walletBridge=swaponline') !== -1;
+        var isIframe = window.parent !== window;
+
+        if (isBridgeMode && isIframe) {
+          var FALLBACK_URL = 'https://swaponline.github.io/wallet-apps-bridge-client.js';
+          var scriptUrl = FALLBACK_URL;
+
+          var referrer = document.referrer;
+          if (referrer) {
+            try {
+              var origin = new URL(referrer).origin;
+              scriptUrl = origin + '/wallet-apps-bridge-client.js';
+            } catch (e) {
+              // Malformed referrer URL — use fallback
+            }
+          }
+
+          var script = document.createElement('script');
+          script.src = scriptUrl;
+          script.async = false;
+          document.head.appendChild(script);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
