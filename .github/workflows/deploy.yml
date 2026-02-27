@@ -32,6 +32,7 @@ jobs:
       - name: Build unifactory (embedded)
         run: |
           cd unifactory
+          echo "SKIP_PREFLIGHT_CHECK=true" > .env
           npm install --legacy-peer-deps
           npm run build_clean
 
