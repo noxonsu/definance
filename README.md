@@ -1,4 +1,8 @@
-Обновление vendor
+# DeFinance
+
+[![Deploy Status](https://github.com/noxonsu/definance/actions/workflows/deploy.yml/badge.svg)](https://github.com/noxonsu/definance/actions/workflows/deploy.yml)
+
+## Обновление vendor
 
 1. Клонируем в отдельную папку https://github.com/noxonsu/unifactory
 ```
