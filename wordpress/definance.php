@@ -18,7 +18,7 @@ define( 'DEFINANCE_URL', plugin_dir_url( __FILE__ ) );
 /**
  * Plugin Init
  */
-require dirname(__DIR__) . '/App/autoload.php';
+require __DIR__ . '/App/autoload.php';
 
 // Perma link
 function definance_default_slug(){
