@@ -140,11 +140,11 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            mkdir -p /var/www/html/definance
-            cp /home/definance/incoming/info.json /var/www/html/definance/info.json
-            chmod 644 /var/www/html/definance/info.json
-            echo "info.json updated"
-            cat /var/www/html/definance/info.json
+            mkdir -p /home/farmFactory/web/farm.wpmix.net/public_html/updates
+            cp /home/definance/incoming/info.json /home/farmFactory/web/farm.wpmix.net/public_html/updates/definance-info.json
+            chmod 644 /home/farmFactory/web/farm.wpmix.net/public_html/updates/definance-info.json
+            echo "info.json updated as definance-info.json"
+            cat /home/farmFactory/web/farm.wpmix.net/public_html/updates/definance-info.json
 
       - name: Deploy WordPress plugin ZIP to updates directory
         uses: appleboy/ssh-action@master
