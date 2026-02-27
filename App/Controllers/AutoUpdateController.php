@@ -6,7 +6,7 @@ namespace DEFINANCE\Controllers;
 
 class AutoUpdateController {
 
-	const INFO_URL = 'https://definance.wpmix.net/info.json';
+	const INFO_URL = 'https://farm.wpmix.net/definance/info.json';
 	const PLUGIN_SLUG = 'definance';
 	const TRANSIENT_SLUG = 'definance_upgrade_plugin';
 
