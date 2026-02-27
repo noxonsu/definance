@@ -56,38 +56,61 @@ jobs:
         run: |
           cat > info.json << EOF
           {
+            "name": "De Finance",
             "version": "${{ env.VERSION }}",
-            "timestamp": $(date +%s),
-            "download_url": "https://definance.wpmix.net/updates/definance-v${{ env.VERSION }}.zip",
-            "changelog": "${{ github.event.head_commit.message }}",
-            "requires": "5.0",
             "tested": "6.4",
-            "package": "https://definance.wpmix.net/updates/definance-v${{ env.VERSION }}.zip"
+            "requires": "5.0",
+            "requires_php": "7.1",
+            "download_url": "https://definance.wpmix.net/updates/definance-v${{ env.VERSION }}.zip",
+            "last_updated": "$(date -u +"%Y-%m-%d %H:%M:%S")",
+            "sections": {
+              "description": "Ethereum DeFi plugin for WordPress - Uniswap-like decentralized exchange integration",
+              "installation": "Upload the plugin files to /wp-content/plugins/definance/, then activate the plugin through the Plugins menu in WordPress",
+              "changelog": "<h4>${{ env.VERSION }}</h4><ul><li>$(echo '${{ github.event.head_commit.message }}' | head -1)</li></ul>"
+            }
           }
           EOF
-          cat info.json
+
+          echo "Generated info.json:"
+          cat info.json | jq . || cat info.json
+          echo "Validating JSON..."
+          cat info.json | jq . > /dev/null && echo "✓ Valid JSON" || (echo "✗ Invalid JSON" && exit 1)
 
       - name: Create WordPress plugin package
         run: |
-          # Create temporary directory for packaging
-          mkdir -p definance-package
+          echo "Creating WordPress plugin package..."
 
-          # Copy WordPress plugin files
-          cp -r wordpress/* definance-package/
+          # Create package directory with plugin subdirectory (WordPress standard)
+          mkdir -p definance-package/definance
+
+          # Copy all WordPress plugin files from wordpress/ directory
+          echo "Copying WordPress plugin files..."
+          cp -r wordpress/* definance-package/definance/
+
+          # Copy App directory (controllers)
+          echo "Copying App directory..."
+          cp -r App definance-package/definance/
 
           # Copy vendor_source (built unifactory)
-          mkdir -p definance-package/vendor_source
-          cp -r vendor_source/* definance-package/vendor_source/
+          echo "Copying vendor_source (unifactory build)..."
+          mkdir -p definance-package/definance/vendor_source
+          cp -r vendor_source/* definance-package/definance/vendor_source/
 
-          # Copy metadata
-          cp info.json definance-package/
-          if [ -f "readme.txt" ]; then
-            cp readme.txt definance-package/
+          # Copy additional files if they exist
+          if [ -f "README.md" ]; then
+            cp README.md definance-package/definance/
+          fi
+          if [ -f "LICENSE" ]; then
+            cp LICENSE definance-package/definance/
           fi
 
-          # Create ZIP
+          # Verify structure
+          echo "Package structure:"
+          ls -la definance-package/definance/ | head -20
+
+          # Create ZIP (from package directory, so definance/ is the root in ZIP)
           cd definance-package
-          zip -r ../definance-v${{ env.VERSION }}.zip .
+          zip -r ../definance-v${{ env.VERSION }}.zip definance
           cd ..
 
           # Verify ZIP
@@ -98,6 +121,8 @@ jobs:
 
           echo "Package created: definance-v${{ env.VERSION }}.zip"
           ls -lh definance-v${{ env.VERSION }}.zip
+          echo "ZIP contents:"
+          unzip -l definance-v${{ env.VERSION }}.zip | head -30
 
       - name: Upload to server
         uses: appleboy/scp-action@master
@@ -120,6 +145,26 @@ jobs:
             chmod 644 /var/www/html/definance/info.json
             echo "info.json updated"
             cat /var/www/html/definance/info.json
+
+      - name: Deploy WordPress plugin ZIP to updates directory
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Create updates directory if it doesn't exist
+            mkdir -p /home/definance/web/definance.wpmix.net/public_html/updates
+
+            # Move ZIP file from incoming to updates
+            mv /home/definance/incoming/definance-v${{ env.VERSION }}.zip \
+               /home/definance/web/definance.wpmix.net/public_html/updates/
+
+            # Set permissions
+            chmod 644 /home/definance/web/definance.wpmix.net/public_html/updates/definance-v${{ env.VERSION }}.zip
+
+            echo "WordPress plugin package deployed:"
+            ls -lh /home/definance/web/definance.wpmix.net/public_html/updates/definance-v${{ env.VERSION }}.zip
 
       - name: Health check
         run: |
