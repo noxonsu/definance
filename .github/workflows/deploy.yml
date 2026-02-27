@@ -29,6 +29,17 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Generated version: $VERSION"
 
+      - name: Update version in plugin files
+        run: |
+          # Update plugin header version
+          sed -i "s/^ \* Version: .*/ * Version: ${{ env.VERSION }}/" wordpress/definance.php
+
+          # Update version constant
+          sed -i "s/define( 'DEFINANCE_VER', '.*'/define( 'DEFINANCE_VER', '${{ env.VERSION }}'/" wordpress/definance.php
+
+          echo "Updated wordpress/definance.php:"
+          grep -E "Version:|DEFINANCE_VER" wordpress/definance.php
+
       - name: Build unifactory (embedded)
         run: |
           cd unifactory
