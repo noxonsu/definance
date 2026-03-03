@@ -46,3 +46,21 @@ definance\vendor_source
 - runtime override: `window.SO_WalletAppsAllowedOrigins = ['https://wallet.example']`
 - query: `?walletBridge=swaponline&walletBridgeAllowedOrigins=https://wallet.example,https://wallet2.example`
 - WordPress option: `definance_wallet_bridge_allowed_origins` (строка CSV), пробрасывается в `window.SO_Definance.walletBridgeAllowedOrigins`
+
+---
+
+## Ecosystem
+
+This project is part of the [onout.org](https://onout.org) open-source DeFi toolkit:
+
+| Product | Description |
+|---------|-------------|
+| [Wallet](https://onout.org/wallet/) | Multi-currency crypto wallet + P2P swap |
+| **[DEX](https://onout.org/dex/)** | ← this project (WordPress plugin) — create your own DEX |
+| [Farming](https://onout.org/farming/) | ERC20 staking & yield farming |
+| [CrossChain](https://onout.org/crosschain/) | Cross-chain bridge |
+| [DAO Widget](https://onout.org/dao/) | Create your own DAO (Snapshot fork) |
+| [NFTsy](https://onout.org/nft/) | NFT showcase plugin |
+| [PredictionMarket](https://onout.org/predictionmarket/) | Prediction market platform |
+| [Launchpad](https://onout.org/launchpad/) | IDO Launchpad |
+| [Lottery](https://onout.org/lottery/) | Crypto lottery |
