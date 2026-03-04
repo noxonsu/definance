@@ -11,6 +11,7 @@ import { useAppState } from 'state/application/hooks'
 import { retrieveDomainData } from 'state/application/actions'
 import { enableList } from 'state/lists/actions'
 import { fetchDomainData, getCurrentDomain } from 'utils/app'
+import { detectBridgeMode } from 'utils/walletBridge'
 import { useStorageContract } from 'hooks/useContract'
 import { SUPPORTED_CHAIN_IDS } from '../connectors'
 import { STORAGE_NETWORK_ID } from '../constants'
@@ -97,6 +98,7 @@ export default function App() {
   const [domainData, setDomainData] = useState<any>(null)
   const { admin, factory, router, projectName, background, pairHash } = useAppState()
   const [domainDataTrigger, setDomainDataTrigger] = useState<boolean>(false)
+  const { isBridgeMode } = detectBridgeMode()
 
   useEffect(() => {
     setDomainDataTrigger((state) => !state)
@@ -108,7 +110,10 @@ export default function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setGreetingScreenIsActive(!domainData?.admin)
+    // In bridge/iframe mode (walletBridge=swaponline), skip the admin-creation
+    // GreetingScreen — the DEX is being consumed by MCW's Apps section and the
+    // admin setup flow is not relevant for embedded usage.
+    setGreetingScreenIsActive(!isBridgeMode && !domainData?.admin)
 
     // Set favicon
     const faviconUrl = localStorage.getItem('faviconUrl')
