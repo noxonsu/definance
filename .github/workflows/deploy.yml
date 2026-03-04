@@ -44,8 +44,7 @@ jobs:
         run: |
           cd unifactory
           echo "SKIP_PREFLIGHT_CHECK=true" > .env
-          echo "engine-strict=false" >> .npmrc
-          NODE_OPTIONS=--openssl-legacy-provider npm install --legacy-peer-deps
+          npm_config_engine_strict=false NODE_OPTIONS=--openssl-legacy-provider npm install --legacy-peer-deps
           NODE_OPTIONS=--openssl-legacy-provider CI=false npm run build_clean
 
       - name: Verify unifactory build
