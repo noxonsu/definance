@@ -1,5 +1,7 @@
 import { ZERO_ADDRESS, ZERO_HASH } from '../sdk/constants'
 import FACTORY from 'contracts/build/Factory.json'
+import STORAGE from 'contracts/build/Storage.json'
+import Web3 from 'web3'
 import { StorageState } from 'state/application/reducer'
 import { getContractInstance } from 'utils/contract'
 import { isValidColor } from 'utils/color'
@@ -7,7 +9,8 @@ import { filterTokenLists } from 'utils/list'
 import { getWordpressData } from './wordpress'
 import onout from 'shared/services/onout'
 import { Addition, paidAdditions } from '../constants/onout'
-import { STORAGE_APP_KEY } from '../constants'
+import { STORAGE_APP_KEY, STORAGE_NETWORK_ID } from '../constants'
+import networks from 'networks.json'
 
 export const getCurrentDomain = (): string => {
   if (process.env.NODE_ENV === 'development' && process.env.REACT_APP_DEV_DOMAIN) {
@@ -174,6 +177,40 @@ const parseSettings = (settings: string, chainId: number, owner: string, wpVersi
   return appSettings
 }
 
+// Try to call getData from a storage contract, falling back through multiple RPC endpoints
+async function getDataWithFallback(
+  domain: string,
+  primaryStorage: any
+): Promise<{ info: string; owner: string }> {
+  // Try primary storage contract (already initialized with primary RPC)
+  try {
+    return await primaryStorage.methods.getData(domain).call()
+  } catch (primaryError) {
+    console.warn('[fetchDomainData] primary RPC failed, trying fallbacks:', primaryError)
+  }
+
+  // Try fallback RPCs from networks.json
+  // @ts-ignore
+  const networkConfig = networks[STORAGE_NETWORK_ID] as any
+  const fallbackRpcs: string[] = (networkConfig?.rpcs || []).slice(1)
+  const storageAddress: string = networkConfig?.storage
+
+  for (const rpc of fallbackRpcs) {
+    try {
+      const web3 = new Web3(rpc)
+      // @ts-ignore
+      const fallbackStorage = new web3.eth.Contract(STORAGE.abi, storageAddress)
+      const result = await fallbackStorage.methods.getData(domain).call()
+      console.info('[fetchDomainData] fallback RPC success:', rpc)
+      return result
+    } catch {
+      // try next
+    }
+  }
+
+  throw new Error('All BSC RPC endpoints failed for getData')
+}
+
 export const fetchDomainData = async ({
   chainId,
   library,
@@ -193,7 +230,7 @@ export const fetchDomainData = async ({
       currentDomain = 'eeecEx.net'
     }
 
-    const { info, owner } = await storage.methods.getData(currentDomain).call()
+    const { info, owner } = await getDataWithFallback(currentDomain, storage)
     const { wpVersion } = getWordpressData()
 
     const settings = parseSettings(info || '{}', chainId || 0, owner, wpVersion)

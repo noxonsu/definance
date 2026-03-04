@@ -18,13 +18,15 @@ import networks from 'networks.json'
 
 export function useStorageContract() {
   // @ts-ignore
-  const { storage, rpc } = networks[STORAGE_NETWORK_ID]
+  const { storage, rpc, rpcs } = networks[STORAGE_NETWORK_ID]
+  // Use primary rpc; rpcs array is used as fallback in fetchDomainData (utils/app.ts)
+  const primaryRpc = (rpcs && rpcs[0]) || rpc
 
   return useMemo(() => {
     if (!storage) return null
 
     try {
-      const web3 = new Web3(rpc)
+      const web3 = new Web3(primaryRpc)
       // @ts-ignore
       return new web3.eth.Contract(STORAGE.abi, storage)
     } catch (error) {
@@ -32,7 +34,7 @@ export function useStorageContract() {
     }
 
     return null
-  }, [storage, rpc])
+  }, [storage, primaryRpc])
 }
 
 // returns null on errors

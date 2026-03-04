@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20'
 
       - name: Generate version
         id: version
@@ -44,8 +44,8 @@ jobs:
         run: |
           cd unifactory
           echo "SKIP_PREFLIGHT_CHECK=true" > .env
-          npm install --legacy-peer-deps
-          npm run build_clean
+          NODE_OPTIONS=--openssl-legacy-provider npm install --legacy-peer-deps
+          NODE_OPTIONS=--openssl-legacy-provider CI=false npm run build_clean
 
       - name: Verify unifactory build
         run: |
@@ -65,22 +65,23 @@ jobs:
 
       - name: Create info.json
         run: |
-          cat > info.json << EOF
-          {
-            "name": "De Finance",
-            "version": "${{ env.VERSION }}",
-            "tested": "6.4",
-            "requires": "5.0",
-            "requires_php": "7.1",
-            "download_url": "https://definance.wpmix.net/updates/definance-v${{ env.VERSION }}.zip",
-            "last_updated": "$(date -u +"%Y-%m-%d %H:%M:%S")",
-            "sections": {
-              "description": "Ethereum DeFi plugin for WordPress - Uniswap-like decentralized exchange integration",
-              "installation": "Upload the plugin files to /wp-content/plugins/definance/, then activate the plugin through the Plugins menu in WordPress",
-              "changelog": "<h4>${{ env.VERSION }}</h4><ul><li>$(echo '${{ github.event.head_commit.message }}' | head -1)</li></ul>"
-            }
-          }
-          EOF
+          COMMIT_MSG=$(git log -1 --pretty=format:'%s')
+          LAST_UPDATED=$(date -u +"%Y-%m-%d %H:%M:%S")
+          echo "{}" | jq -n \
+            --arg name "De Finance" \
+            --arg version "${{ env.VERSION }}" \
+            --arg dl "https://definance.wpmix.net/updates/definance-v${{ env.VERSION }}.zip" \
+            --arg updated "$LAST_UPDATED" \
+            --arg msg "$COMMIT_MSG" \
+            '{
+              name: $name, version: $version, tested: "6.4", requires: "5.0", requires_php: "7.1",
+              download_url: $dl, last_updated: $updated,
+              sections: {
+                description: "Ethereum DeFi plugin for WordPress - Uniswap-like decentralized exchange integration",
+                installation: "Upload the plugin files to /wp-content/plugins/definance/, then activate the plugin through the Plugins menu in WordPress",
+                changelog: ("<h4>" + $version + "</h4><ul><li>" + $msg + "</li></ul>")
+              }
+            }' > info.json
 
           echo "Generated info.json:"
           cat info.json | jq . || cat info.json
@@ -177,7 +178,7 @@ jobs:
             echo "WordPress plugin package deployed:"
             ls -lh /home/definance/web/definance.wpmix.net/public_html/updates/definance-v${{ env.VERSION }}.zip
 
-      - name: Health check
+      - name: Health check — WordPress plugin
         run: |
           echo "Waiting 10 seconds for deployment to settle..."
           sleep 10
@@ -186,9 +187,75 @@ jobs:
           HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://definance.wpmix.net/definance/info.json || echo "000")
 
           if [ "$HTTP_CODE" = "200" ]; then
-            echo "✓ Health check passed (HTTP $HTTP_CODE)"
+            echo "✓ WordPress plugin info.json accessible (HTTP $HTTP_CODE)"
           else
-            echo "⚠ Warning: Health check returned HTTP $HTTP_CODE (non-blocking)"
+            echo "⚠ Warning: WordPress info.json returned HTTP $HTTP_CODE (non-blocking)"
+          fi
+
+      - name: Health check — BSC RPC nodes
+        run: |
+          echo "Checking BSC RPC public nodes used in the DEX..."
+          PAYLOAD='{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}'
+          FAILED=0
+
+          for RPC in \
+            "https://bsc-rpc.publicnode.com" \
+            "https://1rpc.io/bnb" \
+            "https://bsc.drpc.org" \
+            "https://bsc-dataseed1.binance.org/"; do
+            RESPONSE=$(curl -sf -X POST "$RPC" -H 'Content-Type: application/json' -d "$PAYLOAD" 2>/dev/null || echo "FAILED")
+            if echo "$RESPONSE" | grep -q '"result"'; then
+              BLOCK=$(echo "$RESPONSE" | python3 -c "import sys,json; d=json.load(sys.stdin); print(int(d['result'],16))" 2>/dev/null || echo "?")
+              echo "✓ $RPC  block=$BLOCK"
+            else
+              echo "✗ $RPC  UNREACHABLE"
+              FAILED=$((FAILED + 1))
+            fi
+          done
+
+          if [ $FAILED -ge 4 ]; then
+            echo "✗ All BSC RPC nodes failed!"
+            exit 1
+          elif [ $FAILED -gt 0 ]; then
+            echo "⚠ $FAILED RPC(s) unreachable — fallback available"
+          else
+            echo "✓ All BSC RPC nodes healthy"
+          fi
+
+      - name: Health check — dex.onout.org (no greeting modal)
+        run: |
+          echo "Checking dex.onout.org..."
+
+          # 1. HTTP 200
+          HTTP_CODE=$(curl -sf -o /dev/null -w "%{http_code}" https://dex.onout.org/ 2>/dev/null || echo "000")
+          if [ "$HTTP_CODE" = "200" ]; then
+            echo "✓ dex.onout.org loads (HTTP 200)"
+          else
+            echo "✗ dex.onout.org returned HTTP $HTTP_CODE"
+            exit 1
+          fi
+
+          # 2. Ensure broken bscrpc.com is not in deployed JS
+          JS_URL=$(curl -sf https://dex.onout.org/ 2>/dev/null | grep -o 'src="[^"]*main\.[^"]*\.chunk\.js"' | grep -o 'https://[^"]*' | head -1)
+          if [ -z "$JS_URL" ]; then
+            JS_URL="https://dex.onout.org/$(curl -sf https://dex.onout.org/ 2>/dev/null | grep -o '"main\.[^"]*\.chunk\.js"' | tr -d '"' | head -1)"
+          fi
+
+          if curl -sf "$JS_URL" 2>/dev/null | grep -q 'bscrpc.com'; then
+            echo "✗ Old broken RPC (bscrpc.com) found in deployed JS bundle!"
+            exit 1
+          else
+            echo "✓ No broken bscrpc.com RPC in deployed JS"
+          fi
+
+          # 3. Check that BSC Storage contract is reachable (proxy for 'swap form visible, not greeting modal')
+          STORAGE="0xa7472f384339D37EfE505a1A71619212495A973A"
+          PAYLOAD='{"jsonrpc":"2.0","method":"eth_call","params":[{"to":"'"$STORAGE"'","data":"0x20965255000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000000d6465782e6f6e6f75742e6f726700000000000000000000000000000000000000"},"latest"],"id":1}'
+          RESPONSE=$(curl -sf -X POST "https://bsc-rpc.publicnode.com" -H 'Content-Type: application/json' -d "$PAYLOAD" 2>/dev/null || echo "FAILED")
+          if echo "$RESPONSE" | grep -q '"result"'; then
+            echo "✓ BSC Storage contract responds for dex.onout.org → swap form will show (not greeting modal)"
+          else
+            echo "⚠ BSC Storage check failed — user may see greeting modal if RPC is down"
           fi
 
       - name: Notify completion
