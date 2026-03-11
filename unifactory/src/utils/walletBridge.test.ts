@@ -109,7 +109,7 @@ describe('walletBridge', () => {
       // Get the script element that was appended
       const scriptEl = appendChildSpy.mock.calls[0][0] as HTMLScriptElement
       expect(scriptEl.tagName).toBe('SCRIPT')
-      expect(scriptEl.src).toBe('https://swaponline.github.io/wallet-apps-bridge-client.js')
+      expect(scriptEl.src).toBe('https://appsource.github.io/wallet/wallet-apps-bridge-client.js')
       expect(scriptEl.getAttribute('data-wallet-bridge')).toBe('true')
 
       // Simulate script load
@@ -121,7 +121,7 @@ describe('walletBridge', () => {
       const promise = loadBridgeClient('')
 
       const scriptEl = appendChildSpy.mock.calls[0][0] as HTMLScriptElement
-      expect(scriptEl.src).toBe('https://swaponline.github.io/wallet-apps-bridge-client.js')
+      expect(scriptEl.src).toBe('https://appsource.github.io/wallet/wallet-apps-bridge-client.js')
 
       scriptEl.onload?.(new Event('load'))
       await promise
@@ -131,7 +131,7 @@ describe('walletBridge', () => {
       const promise = loadBridgeClient('not-a-valid-url')
 
       const scriptEl = appendChildSpy.mock.calls[0][0] as HTMLScriptElement
-      expect(scriptEl.src).toBe('https://swaponline.github.io/wallet-apps-bridge-client.js')
+      expect(scriptEl.src).toBe('https://appsource.github.io/wallet/wallet-apps-bridge-client.js')
 
       scriptEl.onload?.(new Event('load'))
       await promise

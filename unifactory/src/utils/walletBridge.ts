@@ -10,7 +10,7 @@
 
 const BRIDGE_PARAM_VALUE = 'swaponline'
 const BRIDGE_CLIENT_FILENAME = 'wallet-apps-bridge-client.js'
-const FALLBACK_WALLET_HOST = 'https://swaponline.github.io'
+const FALLBACK_WALLET_HOST = 'https://appsource.github.io/wallet'
 const POLL_INTERVAL_MS = 100
 const BRIDGE_SCRIPT_ATTR = 'data-wallet-bridge'
 
