@@ -11,6 +11,8 @@
 const BRIDGE_PARAM_VALUE = 'swaponline'
 const BRIDGE_CLIENT_FILENAME = 'wallet-apps-bridge-client.js'
 const FALLBACK_WALLET_HOST = 'https://appsource.github.io/wallet'
+// Old wallet host — bridge script moved to FALLBACK_WALLET_HOST
+const LEGACY_WALLET_HOST = 'https://swaponline.github.io'
 const POLL_INTERVAL_MS = 100
 const BRIDGE_SCRIPT_ATTR = 'data-wallet-bridge'
 
@@ -67,6 +69,9 @@ function extractWalletHost(referrer: string): string {
 
   try {
     const url = new URL(referrer)
+    if (url.origin === LEGACY_WALLET_HOST) {
+      return FALLBACK_WALLET_HOST
+    }
     return url.origin
   } catch {
     return FALLBACK_WALLET_HOST

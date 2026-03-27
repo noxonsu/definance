@@ -160,9 +160,11 @@ describe('transaction reducer', () => {
 
   describe('clearAllTransactions', () => {
     it('removes all transactions for the chain', () => {
+      const chainA = appConfig.TESTNET.chainId
+      const chainB = 1 // mainnet
       store.dispatch(
         addTransaction({
-          chainId: appConfig.TESTNET.chainId,
+          chainId: chainA,
           summary: 'hello world',
           hash: '0x0',
           approval: { tokenAddress: 'abc', spender: 'def' },
@@ -171,7 +173,7 @@ describe('transaction reducer', () => {
       )
       store.dispatch(
         addTransaction({
-          chainId: appConfig.TESTNET.chainId,
+          chainId: chainB,
           summary: 'hello world',
           hash: '0x1',
           approval: { tokenAddress: 'abc', spender: 'def' },
@@ -179,20 +181,14 @@ describe('transaction reducer', () => {
         })
       )
       expect(Object.keys(store.getState())).toHaveLength(2)
-      expect(Object.keys(store.getState())).toEqual([
-        String(appConfig.TESTNET.chainId),
-        String(appConfig.TESTNET.chainId),
-      ])
-      expect(Object.keys(store.getState()[appConfig.TESTNET.chainId] ?? {})).toEqual(['0x0'])
-      expect(Object.keys(store.getState()[appConfig.TESTNET.chainId] ?? {})).toEqual(['0x1'])
-      store.dispatch(clearAllTransactions({ chainId: appConfig.TESTNET.chainId }))
+      expect(Object.keys(store.getState())).toEqual(expect.arrayContaining([String(chainA), String(chainB)]))
+      expect(Object.keys(store.getState()[chainA] ?? {})).toEqual(['0x0'])
+      expect(Object.keys(store.getState()[chainB] ?? {})).toEqual(['0x1'])
+      store.dispatch(clearAllTransactions({ chainId: chainA }))
       expect(Object.keys(store.getState())).toHaveLength(2)
-      expect(Object.keys(store.getState())).toEqual([
-        String(appConfig.TESTNET.chainId),
-        String(appConfig.TESTNET.chainId),
-      ])
-      expect(Object.keys(store.getState()[appConfig.TESTNET.chainId] ?? {})).toEqual([])
-      expect(Object.keys(store.getState()[appConfig.TESTNET.chainId] ?? {})).toEqual(['0x1'])
+      expect(Object.keys(store.getState())).toEqual(expect.arrayContaining([String(chainA), String(chainB)]))
+      expect(Object.keys(store.getState()[chainA] ?? {})).toEqual([])
+      expect(Object.keys(store.getState()[chainB] ?? {})).toEqual(['0x1'])
     })
   })
 })

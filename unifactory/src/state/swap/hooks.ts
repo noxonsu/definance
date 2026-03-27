@@ -243,7 +243,7 @@ function validatedRecipient(recipient: any): string | null {
   return null
 }
 
-function queryParametersToSwapState(parsedQs: ParsedQs, baseCurrency: BaseCurrency | null): SwapState {
+export function queryParametersToSwapState(parsedQs: ParsedQs, baseCurrency: BaseCurrency | null): SwapState {
   let inputCurrency = parseCurrencyFromURLParameter(parsedQs.inputCurrency, baseCurrency)
   let outputCurrency = parseCurrencyFromURLParameter(parsedQs.outputCurrency, baseCurrency)
 

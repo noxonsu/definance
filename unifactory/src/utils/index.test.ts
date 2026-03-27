@@ -23,16 +23,14 @@ describe('utils', () => {
     it('correct for address', () => {
       expect(getExplorerLink(1, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
     })
-    it('unrecognized chain id defaults to mainnet', () => {
-      expect(getExplorerLink(2, 'abc', 'address')).toEqual('https://etherscan.io/address/abc')
+    it('unrecognized chain id returns empty string', () => {
+      expect(getExplorerLink(2, 'abc', 'address')).toEqual('')
     })
-    it('ropsten', () => {
-      expect(getExplorerLink(3, 'abc', 'address')).toEqual('https://ropsten.etherscan.io/address/abc')
+    it('bsc mainnet', () => {
+      expect(getExplorerLink(56, 'abc', 'address')).toEqual('https://bscscan.com/address/abc')
     })
-    it('enum', () => {
-      expect(getExplorerLink(appConfig.TESTNET.chainId, 'abc', 'address')).toEqual(
-        'https://rinkeby.etherscan.io/address/abc'
-      )
+    it('avalanche', () => {
+      expect(getExplorerLink(43114, 'abc', 'address')).toEqual('https://snowtrace.io/address/abc')
     })
   })
 

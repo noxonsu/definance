@@ -63,10 +63,11 @@ describe('application reducer', () => {
       expect(store.getState().blockNumber[appConfig.TESTNET.chainId]).toEqual(3)
     })
     it('works with non-set chains', () => {
-      store.dispatch(updateBlockNumber({ chainId: appConfig.TESTNET.chainId, blockNumber: 2 }))
+      const newChainId = appConfig.TESTNET.chainId + 1
+      store.dispatch(updateBlockNumber({ chainId: newChainId, blockNumber: 2 }))
       expect(store.getState().blockNumber).toEqual({
         [appConfig.TESTNET.chainId]: 3,
-        [appConfig.TESTNET.chainId]: 2,
+        [newChainId]: 2,
       })
     })
   })
